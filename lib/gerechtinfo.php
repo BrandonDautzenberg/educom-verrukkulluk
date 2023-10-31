@@ -38,7 +38,8 @@ class gerechtinfo
     }
 
     public function favoriet_toevoegen($gerecht_id, $user_id)
-    {
+    {   
+        $this->favoriet_verwijderen($gerecht_id, $user_id);	
         $sql = "Insert into gerecht_info (user_id, gerecht_id, record_type) values ($user_id, $gerecht_id, 'F')";
         $result = mysqli_query($this->connection, $sql);
         return ($result);
