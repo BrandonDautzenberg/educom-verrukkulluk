@@ -8,7 +8,6 @@ class user {
         $this->connection = $connection;
     }
   
-    /// === ophalen van één user === ///
     public function selecteer_user($user_id) {
 
         $sql = "select * from user where id = $user_id";
