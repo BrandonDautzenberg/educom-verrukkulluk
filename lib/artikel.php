@@ -8,7 +8,6 @@ class artikel {
         $this->connection = $connection;
     }
   
-    /// === Ophalen van één artikel  === ///
     public function selecteer_artikel($artikel_id) {
 
         $sql = "select * from artikel where id = $artikel_id";
