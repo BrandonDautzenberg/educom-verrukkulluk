@@ -8,7 +8,6 @@ class keukentype {
         $this->connection = $connection;
     }
   
-    /// === ophalen van keukentype === ///
     public function selecteer_keuken_type($keuken_type_id) {
 
         $sql = "select * from keuken_type where id = $keuken_type_id";
