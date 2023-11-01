@@ -5,7 +5,6 @@ class gerecht
     private $connection;
     private $keukentype;
     private $ingredient;
-    private $artikel;
     private $gerechtinfo;
     private $user;
 
@@ -14,15 +13,17 @@ class gerecht
         $this->connection = $connection;
         $this->keukentype = new keukentype($connection);
         $this->ingredient = new ingredient($connection);
-        $this->artikel = new artikel($connection);
         $this->gerechtinfo = new gerechtinfo($connection);
         $this->user = new user($connection);
     }
 
-    // === ophalen van alle gerechten === //
-    public function selecteer_gerecht()
+    public function selecteer_gerecht($gerecht_id = "alle_gerechten")
     {
-        $sql = "select * from gerecht";
+        if ($gerecht_id === "alle_gerechten") {
+            $sql = "select * from gerecht";
+        } else {
+            $sql = "select * from gerecht where id = $gerecht_id";
+        }
         $result = mysqli_query($this->connection, $sql);
 
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -39,11 +40,11 @@ class gerecht
 
             $return[] = [
                 "gerecht" => $row,
-                "ingredient" => $ingredienten,
-                "users" => $users,
+                "ingredienten" => $ingredienten,
+                "toegevoegd door" => $users,
                 "prijs" => $prijs,
                 "calorieën" => $totaalcal,
-                "waardering" => $waardering,
+                "gemiddelde waardering" => $waardering,
                 "stappen" => $stappen,
                 "opmerkingen" => $opmerkingen,
                 "keuken" => $keuken,
@@ -51,7 +52,6 @@ class gerecht
                 "favoriet" => $favoriet,
             ];
         };
-
         return ($return);
     }
 
@@ -70,7 +70,6 @@ class gerecht
     private function bereken_prijs($gerecht_id)
     {
         $ingredient_array = $this->selecteer_ingredient($gerecht_id);
-
         $totaalprijs = 0;
         foreach ($ingredient_array as $ingredient) {
             $totaalprijs += $ingredient["art-prijs"];
@@ -81,7 +80,6 @@ class gerecht
     private function bereken_calorieen($gerecht_id)
     {
         $ingredient_array = $this->selecteer_ingredient($gerecht_id);
-
         $totaalcal = 0;
         foreach ($ingredient_array as $ingredient) {
             $totaalcal += $ingredient["ing-aantal"] * $ingredient["art-calorieën"];
@@ -92,9 +90,7 @@ class gerecht
     private function bereken_waardering($gerecht_id)
     {
         $gerecht_info_array = $this->gerechtinfo->selecteer_gerecht_info($gerecht_id, 'W');
-
         if ($gerecht_info_array != null) {
-
             $totaal_waarderingen = 0;
             foreach ($gerecht_info_array as $waardering) {
                 $totaal_waarderingen += $waardering["nummeriekveld"];
@@ -105,7 +101,6 @@ class gerecht
 
     private function selecteer_stappen($gerecht_id)
     {
-
         $gerecht_info_array = $this->gerechtinfo->selecteer_gerecht_info($gerecht_id, 'B');
         foreach ($gerecht_info_array as $stappen) {
             $instructie[] = [
@@ -119,7 +114,6 @@ class gerecht
     private function selecteer_opmerkingen($gerecht_id)
     {
         $gerecht_info_array = $this->gerechtinfo->selecteer_gerecht_info($gerecht_id, 'O');
-
         if ($gerecht_info_array != null) {
             foreach ($gerecht_info_array as $opm) {
                 $opmerkingen[] = [
