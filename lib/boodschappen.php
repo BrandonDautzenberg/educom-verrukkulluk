@@ -16,12 +16,16 @@ class boodschappen
         $ingredienten = $this->ingredient->selecteer_ingredient($gerecht_id);
         foreach ($ingredienten as $ingredient) {
             $ingredient_artikel = $ingredient["ing-artikel-id"];
+            $prijs = $ingredient["art-prijs"];
             $aantal = 1;
             if ($this->artikel_op_lijst($ingredient_artikel, $user_id)) {
-                $sql = "update boodschappen set aantal = aantal + 1 where artikel_id = $ingredient_artikel";
+                $sql = "UPDATE boodschappen 
+                        SET aantal = aantal + 1 
+                        WHERE artikel_id = $ingredient_artikel";
                 $result = mysqli_query($this->connection, $sql);
             } else {
-                $sql = "insert into boodschappen (user_id, artikel_id, aantal) values ($user_id, $ingredient_artikel, $aantal)";
+                $sql = "INSERT INTO boodschappen (user_id, artikel_id, aantal, prijs) 
+                        VALUES ($user_id, $ingredient_artikel, $aantal, $prijs)";
                 $result = mysqli_query($this->connection, $sql);
             }
         }
@@ -41,7 +45,8 @@ class boodschappen
 
     public function ophalen_boodschappen($user_id)
     {
-        $sql = "select * from boodschappen where user_id = $user_id";
+        $sql = "SELECT * FROM boodschappen 
+                WHERE user_id = $user_id";
         $result = mysqli_query($this->connection, $sql);
         $boodschappen = [];
 
@@ -54,5 +59,17 @@ class boodschappen
             ];
         }
         return ($boodschappen);
+    }
+
+    public function bereken_totaal($user_id)
+    {
+        $totaal_prijs = 0;
+        $sql = "SELECT * FROM boodschappen 
+               WHERE user_id = $user_id";
+        $result = mysqli_query($this->connection, $sql);
+
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $totaal_prijs += $row["prijs"] * $row["aantal"];
+        } return ($totaal_prijs / 100);
     }
 }
