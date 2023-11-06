@@ -15,8 +15,8 @@ class boodschappen
     {
         $ingredienten = $this->ingredient->selecteer_ingredient($gerecht_id);
         foreach ($ingredienten as $ingredient) {
-            $ingredient_artikel = $ingredient["ing-artikel-id"];
-            $prijs = $ingredient["art-prijs"];
+            $ingredient_artikel = $ingredient["ing_artikel_id"];
+            $prijs = $ingredient["art_prijs"];
             $aantal = 1;
             if ($this->artikel_op_lijst($ingredient_artikel, $user_id)) {
                 $result = $this->artikel_bijwerken($ingredient_artikel);

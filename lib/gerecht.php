@@ -72,7 +72,7 @@ class gerecht
         $ingredient_array = $this->selecteer_ingredient($gerecht_id);
         $totaalprijs = 0;
         foreach ($ingredient_array as $ingredient) {
-            $totaalprijs += $ingredient["art-prijs"];
+            $totaalprijs += $ingredient["art_prijs"];
         }
         return ($totaalprijs / 100);
     }
@@ -82,7 +82,7 @@ class gerecht
         $ingredient_array = $this->selecteer_ingredient($gerecht_id);
         $totaalcal = 0;
         foreach ($ingredient_array as $ingredient) {
-            $totaalcal += $ingredient["ing-aantal"] * $ingredient["art-calorieën"];
+            $totaalcal += $ingredient["ing_aantal"] * $ingredient["art_calorieën"];
         }
         return ($totaalcal);
     }

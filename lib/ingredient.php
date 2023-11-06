@@ -25,15 +25,15 @@ class ingredient {
             $artikel = $this->selecteer_artikel($row["artikel_id"]);
             
             $return[] = [
-                "ing-id" => $row["id"], 
-                "ing-gerecht_id" => $row["gerecht_id"],
-                "ing-artikel-id" => $row["artikel_id"],
-                "ing-aantal" => $row["aantal"],
-                "art-name" => $artikel["naam"],
-                "art-calorieën" => $artikel["calorieen"],
-                "art-prijs" => $artikel["prijs"],
-                "art-eenheid" => $artikel["eenheid"],
-                "art-verpakking" => $artikel["verpakking"]
+                "ing_id" => $row["id"], 
+                "ing_gerecht_id" => $row["gerecht_id"],
+                "ing_artikel_id" => $row["artikel_id"],
+                "ing_aantal" => $row["aantal"],
+                "art_naam" => $artikel["naam"],
+                "art_calorieën" => $artikel["calorieen"],
+                "art_prijs" => $artikel["prijs"],
+                "art_eenheid" => $artikel["eenheid"],
+                "art_verpakking" => $artikel["verpakking"]
             ];
         };
 
