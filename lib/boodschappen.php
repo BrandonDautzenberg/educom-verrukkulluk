@@ -19,14 +19,9 @@ class boodschappen
             $prijs = $ingredient["art-prijs"];
             $aantal = 1;
             if ($this->artikel_op_lijst($ingredient_artikel, $user_id)) {
-                $sql = "UPDATE boodschappen 
-                        SET aantal = aantal + 1 
-                        WHERE artikel_id = $ingredient_artikel";
-                $result = mysqli_query($this->connection, $sql);
+                $result = $this->artikel_bijwerken($ingredient_artikel);
             } else {
-                $sql = "INSERT INTO boodschappen (user_id, artikel_id, aantal, prijs) 
-                        VALUES ($user_id, $ingredient_artikel, $aantal, $prijs)";
-                $result = mysqli_query($this->connection, $sql);
+                $result = $this->artikel_toevoegen($ingredient_artikel, $user_id, $aantal, $prijs);
             }
         }
         return ($result);
@@ -70,6 +65,24 @@ class boodschappen
 
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $totaal_prijs += $row["prijs"] * $row["aantal"];
-        } return ($totaal_prijs / 100);
+        }
+        return ($totaal_prijs / 100);
+    }
+
+    public function artikel_bijwerken($ingredient_artikel)
+    {
+        $sql = "UPDATE boodschappen 
+                SET aantal = aantal + 1 
+                WHERE artikel_id = $ingredient_artikel";
+        $result = mysqli_query($this->connection, $sql);
+        return($result);
+    }
+
+    public function artikel_toevoegen($ingredient_artikel, $user_id, $aantal, $prijs) 
+    {
+        $sql = "INSERT INTO boodschappen (user_id, artikel_id, aantal, prijs) 
+                VALUES ($user_id, $ingredient_artikel, $aantal, $prijs)";
+        $result = mysqli_query($this->connection, $sql);
+        return ($result);
     }
 }
