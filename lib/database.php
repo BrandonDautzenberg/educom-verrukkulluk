@@ -2,7 +2,7 @@
 
 define("USER", "root");
 define("PASSWORD", "");
-define("DATABASE", "verrukkulluk");
+define("DATABASE", "verrukkulluk2.0");
 define("HOST", "localhost");
 
 class database

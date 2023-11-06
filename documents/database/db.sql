@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 27 okt 2023 om 15:24
+-- Gegenereerd op: 06 nov 2023 om 09:18
 -- Serverversie: 10.4.28-MariaDB
 -- PHP-versie: 8.2.4
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `verrukkulluk`
+-- Database: `verrukkulluk2.0`
 --
 
 -- --------------------------------------------------------
@@ -31,6 +31,7 @@ CREATE TABLE `artikel` (
   `id` int(11) NOT NULL,
   `naam` varchar(80) NOT NULL,
   `omschrijving` varchar(255) NOT NULL,
+  `calorieen` float NOT NULL,
   `prijs` int(10) NOT NULL,
   `eenheid` varchar(80) NOT NULL,
   `verpakking` varchar(255) NOT NULL
@@ -40,27 +41,53 @@ CREATE TABLE `artikel` (
 -- Gegevens worden geëxporteerd voor tabel `artikel`
 --
 
-INSERT INTO `artikel` (`id`, `naam`, `omschrijving`, `prijs`, `eenheid`, `verpakking`) VALUES
-(1, 'spinazie', 'Spinazie om te (roer)bakken met een uitje, in de salade, stamppot of in een hartige taart. Met spinazie kun je echt eindeloos combineren. Extra handig! Deze spinazie is al gewassen en dus direct klaar voor gebruik.', 159, 'gram', 'afbeelding'),
-(2, 'gele uien', 'Uien behoren tot de familie van de uiachtigen, evenals prei en knoflook.', 164, 'stuks', 'afbeelding'),
-(3, 'knoflook', 'Knoflook is een echte smaakmaker die een gerecht extra smaak en geur geeft.', 109, 'tenen', 'afbeelding'),
-(4, 'biologisch orzo', 'Orzo van 100% biologische tarwe. Kijk voor recepten en inspiratie op ah.nl/allerhande', 189, 'gram', 'afbeelding'),
-(5, 'griekse feta', 'Smaak: zacht en mild.', 229, 'gram', 'afbeelding'),
-(6, 'olijfolie', 'Geraffineerde olijfolie. Olie die uitsluitend bestaat uit geraffineerde olijfolie en rechtstreeks uit olijven verkregen olie.', 699, 'el', 'afbeelding'),
-(7, 'fusilli', 'Pasta van durumtarwegriesmeel', 119, 'gram', 'afbeelding'),
-(8, 'hamblokjes', 'Gekookte hamblokjes', 199, 'gram', 'afbeelding'),
-(9, 'pastasaus tomaat en basilicum', 'Een klassieke pastasaus met tomaat en basilicum', 135, 'gram', 'afbeelding'),
-(10, 'grana padano', 'Grana padano is een harde italiaanse kaas gemaakt van koemelk met een wat lager vetpercentage. Grana Padano lijkt veel op de parmigiano reggiano, maar is een stuk jonger en milder van smaak.', 379, 'gram', 'afbeelding'),
-(11, 'gerookte spekreepjes', 'Gerookte en gezouten varkensspekreepjes, heerlijk door de pasta, winterse stoofpotten tot zomerse salades. Gezouten en gerookt, dat proef je terug in de karakteristieke smaak!', 319, 'gram', 'afbeelding'),
-(12, 'prei', 'Prei is een kruidachtige plant met een karakteristieke geur. De enigszins lange stengels zijn wit tot lichtgroen, het blad is donkergroen. Prei behoort tot de lookfamilie waartoe ook ui, bieslook en knoflook behoren.', 62, 'stuk', 'afbeelding'),
-(13, 'cheddar geraspte kaas', 'Deze geraspte cheddar is heerlijk om te gebruiken in tex-mex of ovenschotel gerechten, zoals nacho\'s.', 289, 'gram', 'afbeelding'),
-(14, 'zuivelspread', 'Albert heijn zuivelspread is een zachte en milde, naturel zuivelspread.', 129, 'gram', 'afbeelding'),
-(15, 'peterselie', 'Deze peterselie met frisse, groene smaak is een echte smaakmaker in allerhande gerechten zoals soepen, sauzen en pastagerechten.', 109, 'gram', 'afbeelding'),
-(16, 'karwijzaad', 'Karwijzaad heeft een bittere, zoete, anijsachtige smaak met een scherpe ondertoon.', 299, 'gram', 'afbeelding'),
-(17, 'witte bollen', 'Smaakvolle zachte witte bollen.', 159, 'stuks', 'afbeelding'),
-(18, 'gegrilde rode paprika', 'Stevig van structuur met een heerlijk rijke, zoet-kruidige smaak.', 259, 'gram', 'afbeelding'),
-(19, 'tomaten', 'Tomaten zijn sappig en vol van smaak. Een gezonde aanvulling in de salade of voor op de boterham.', 139, 'gram', 'afbeelding'),
-(20, 'tomatenketchup', 'Deze ketchup is een heerlijk saus vol zongerijpte tomaten. Een echte smaakmaker bij frites, vlees, vis en pasta', 119, 'l', 'afbeelding');
+INSERT INTO `artikel` (`id`, `naam`, `omschrijving`, `calorieen`, `prijs`, `eenheid`, `verpakking`) VALUES
+(1, 'spinazie', 'Spinazie om te (roer)bakken met een uitje, in de salade, stamppot of in een hartige taart. Met spinazie kun je echt eindeloos combineren. Extra handig! Deze spinazie is al gewassen en dus direct klaar voor gebruik.', 0.24, 159, 'gram', 'afbeelding'),
+(2, 'gele uien', 'Uien behoren tot de familie van de uiachtigen, evenals prei en knoflook.', 37, 164, 'stuks', 'afbeelding'),
+(3, 'knoflook', 'Knoflook is een echte smaakmaker die een gerecht extra smaak en geur geeft.', 4, 109, 'tenen', 'afbeelding'),
+(4, 'biologisch orzo', 'Orzo van 100% biologische tarwe. Kijk voor recepten en inspiratie op ah.nl/allerhande', 3.5, 189, 'gram', 'afbeelding'),
+(5, 'griekse feta', 'Smaak: zacht en mild.', 2.75, 229, 'gram', 'afbeelding'),
+(6, 'olijfolie', 'Geraffineerde olijfolie. Olie die uitsluitend bestaat uit geraffineerde olijfolie en rechtstreeks uit olijven verkregen olie.', 8.19, 699, 'l', 'afbeelding'),
+(7, 'fusilli', 'Pasta van durumtarwegriesmeel', 1.4, 119, 'gram', 'afbeelding'),
+(8, 'hamblokjes', 'Gekookte hamblokjes', 1.33, 199, 'gram', 'afbeelding'),
+(9, 'pastasaus tomaat en basilicum', 'Een klassieke pastasaus met tomaat en basilicum', 1.5, 135, 'gram', 'afbeelding'),
+(10, 'grana padano', 'Grana padano is een harde italiaanse kaas gemaakt van koemelk met een wat lager vetpercentage. Grana Padano lijkt veel op de parmigiano reggiano, maar is een stuk jonger en milder van smaak.', 3.93, 379, 'gram', 'afbeelding'),
+(11, 'gerookte spekreepjes', 'Gerookte en gezouten varkensspekreepjes, heerlijk door de pasta, winterse stoofpotten tot zomerse salades. Gezouten en gerookt, dat proef je terug in de karakteristieke smaak!', 3.5, 319, 'gram', 'afbeelding'),
+(12, 'prei', 'Prei is een kruidachtige plant met een karakteristieke geur. De enigszins lange stengels zijn wit tot lichtgroen, het blad is donkergroen. Prei behoort tot de lookfamilie waartoe ook ui, bieslook en knoflook behoren.', 22, 62, 'stuk', 'afbeelding'),
+(13, 'cheddar geraspte kaas', 'Deze geraspte cheddar is heerlijk om te gebruiken in tex-mex of ovenschotel gerechten, zoals nacho\'s.', 3.96, 289, 'gram', 'afbeelding'),
+(14, 'zuivelspread', 'Albert heijn zuivelspread is een zachte en milde, naturel zuivelspread.', 1.88, 129, 'gram', 'afbeelding'),
+(15, 'peterselie', 'Deze peterselie met frisse, groene smaak is een echte smaakmaker in allerhande gerechten zoals soepen, sauzen en pastagerechten.', 10, 109, 'gram', 'afbeelding'),
+(16, 'karwijzaad', 'Karwijzaad heeft een bittere, zoete, anijsachtige smaak met een scherpe ondertoon.', 10, 299, 'gram', 'afbeelding'),
+(17, 'witte bollen', 'Smaakvolle zachte witte bollen.', 123, 159, 'stuks', 'afbeelding'),
+(18, 'gegrilde rode paprika', 'Stevig van structuur met een heerlijk rijke, zoet-kruidige smaak.', 105, 259, 'gram', 'afbeelding'),
+(19, 'tomaten', 'Tomaten zijn sappig en vol van smaak. Een gezonde aanvulling in de salade of voor op de boterham.', 16, 139, 'gram', 'afbeelding'),
+(20, 'tomatenketchup', 'Deze ketchup is een heerlijk saus vol zongerijpte tomaten. Een echte smaakmaker bij frites, vlees, vis en pasta', 13, 119, 'el', 'afbeelding');
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `boodschappen`
+--
+
+CREATE TABLE `boodschappen` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `artikel_id` int(11) NOT NULL,
+  `aantal` int(11) NOT NULL,
+  `prijs` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `boodschappen`
+--
+
+INSERT INTO `boodschappen` (`id`, `user_id`, `artikel_id`, `aantal`, `prijs`) VALUES
+(214, 1, 4, 2, 189),
+(215, 1, 6, 2, 699),
+(216, 1, 5, 2, 229),
+(217, 1, 1, 2, 159),
+(218, 1, 2, 2, 164),
+(219, 1, 3, 2, 109);
 
 -- --------------------------------------------------------
 
@@ -111,10 +138,10 @@ CREATE TABLE `gerecht_info` (
 --
 
 INSERT INTO `gerecht_info` (`id`, `user_id`, `gerecht_id`, `record_type`, `datum`, `nummeriekveld`, `tekstveld`) VALUES
-(1, 1, 1, 'O', '2023-10-26', 4, '\"Lekker!\"'),
+(1, 1, 1, 'O', '2023-10-26', 0, '\"Lekker!\"'),
 (2, 2, 1, 'F', '2023-10-26', 0, ''),
 (3, 3, 2, 'B', '2023-10-26', 1, 'Kook de fusilli beetgaar volgens de aanwijzingen op de verpakking. Verhit ondertussen de olijfolie in een hapjespan en bak de groenten 5 min. op middelhoog vuur.'),
-(4, 4, 1, 'F', '0000-00-00', 0, ''),
+(4, 4, 1, 'F', '2023-10-26', 0, ''),
 (10, 3, 2, 'B', '2023-10-26', 2, 'Voeg de hamblokjes toe en bak 1 min. mee. Schenk de pastasaus bij het groente-hammengsel en warm 2 min. goed door.'),
 (11, 3, 2, 'B', '2023-10-26', 3, 'Giet de pasta af en meng door de saus. Rasp er de Grana Padano over en serveer.'),
 (12, 2, 1, 'B', '2023-10-26', 1, 'Snipper de ui. Verhit de olie in een hapjespan en bak de ui en het venkelzaad 1 min. op hoog vuur. Snijd ondertussen de knoflook fijn. Voeg samen met de orzo toe en bak nog 1 min. mee op middelhoog vuur. Voeg kokend water toe, schep om en laat de orzo met de deksel op de pan in 7-8 min. op middelhoog vuur gaar worden.'),
@@ -128,7 +155,12 @@ INSERT INTO `gerecht_info` (`id`, `user_id`, `gerecht_id`, `record_type`, `datum
 (22, 4, 4, 'B', '2023-10-26', 1, 'Verhit de olie in een hapjespan en bak de burgers in 5 min. goudbruin. Keer halverwege.'),
 (23, 4, 4, 'B', '2023-10-26', 2, 'Verhit de grillpan. Snijd de bolletjes doormidden en gril alle helften op de snijkant 1 min. Leg de broodjes open.'),
 (24, 4, 4, 'B', '2023-10-26', 3, 'Laat de paprika uitlekken en vang 1 el vocht (per 4 personen) op. Snijd de paprika en de tomaten in blokjes van een ½ cm. Meng de tomaat met de paprika, het paprika-vocht, peper en eventueel zout.'),
-(25, 4, 4, 'B', '2023-10-26', 4, 'Besmeer beide helften van de broodjes met de ketchup en beleg met de vegaburger en tomaten-paprikasalsa.');
+(25, 4, 4, 'B', '2023-10-26', 4, 'Besmeer beide helften van de broodjes met de ketchup en beleg met de vegaburger en tomaten-paprikasalsa.'),
+(26, 1, 1, 'W', '2023-10-30', 4, ''),
+(27, 2, 1, 'W', '2023-10-30', 3, ''),
+(30, 3, 1, 'W', '2023-10-31', 4, ''),
+(31, 4, 1, 'W', '2023-10-31', 2, ''),
+(32, 3, 1, 'O', '2023-10-31', 0, '\"Wel oké\"');
 
 -- --------------------------------------------------------
 
@@ -149,7 +181,7 @@ CREATE TABLE `ingredient` (
 
 INSERT INTO `ingredient` (`id`, `gerecht_id`, `artikel_id`, `aantal`) VALUES
 (1, 1, 4, 300),
-(2, 1, 6, 2),
+(2, 1, 6, 30),
 (3, 1, 5, 200),
 (4, 2, 7, 300),
 (5, 2, 9, 520),
@@ -231,6 +263,12 @@ ALTER TABLE `artikel`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexen voor tabel `boodschappen`
+--
+ALTER TABLE `boodschappen`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexen voor tabel `gerecht`
 --
 ALTER TABLE `gerecht`
@@ -280,6 +318,12 @@ ALTER TABLE `artikel`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
+-- AUTO_INCREMENT voor een tabel `boodschappen`
+--
+ALTER TABLE `boodschappen`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=220;
+
+--
 -- AUTO_INCREMENT voor een tabel `gerecht`
 --
 ALTER TABLE `gerecht`
@@ -289,7 +333,7 @@ ALTER TABLE `gerecht`
 -- AUTO_INCREMENT voor een tabel `gerecht_info`
 --
 ALTER TABLE `gerecht_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT voor een tabel `ingredient`
