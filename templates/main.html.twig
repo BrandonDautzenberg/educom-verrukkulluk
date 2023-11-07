@@ -18,13 +18,13 @@
 <body>
 	<div class="container-fluid">
 
-		<div class="row" style= "background-color: red">
+		<div class="row" style="background-color: red">
 			<div class="col-md-12"> {% block header %}{% endblock %}
 				</div>
 			</div>
 
 			<div class="row">
-				<div class="col-md-3" style="background-color: var(--lighter-green)">
+				<div class="col-md-4 agenda">
 					<h2>Agenda</h2>
 					<i class="fa fa-calendar"></i>
 					Vegetarisch koken
@@ -40,48 +40,73 @@
 					<a href="https://fontawesome.com/icons?d=gallery&m=free">Documentation</a><br>Een workshop vegetarisch koken.<br>
 					<i class="fa fa-file-pdf"></i>
 					<a href="https://www.layoutit.com/build">Layout-it</a>
-				</div>
+					<div class="row">
+						<div class="col-md-12 border"></div>
+						<form role="form">
+							<h1>Login</h1>
+							<div class="form-group">
 
-				<div class="col-md-9" style="background-color: var(--kahki)">
-					<h2>Content</h2>
-					{%  block content %}{%  endblock %}
-				</div>
-			</div>
+								<label for="exampleInputEmail1">
+									Email
+								</label>
+								<input type="email" class="form-control" id="exampleInputEmail1"/>
+							</div>
+							<div class="form-group">
 
-			<div class="row">
-				<div class="col-md-3" style="background-color: var(--darker-red)">
-					<form role="form">
-                        <h1>Login</h1>
-						<div class="form-group">
-
-							<label for="exampleInputEmail1">
-								Email
-							</label>
-							<input type="email" class="form-control" id="exampleInputEmail1"/>
+								<label for="exampleInputPassword1">
+									Wachtwoord
+								</label>
+								<input type="password" class="form-control" id="exampleInputPassword1"/>
+								<button type="submit" class="btn btn-primary login_button" style="background-color: var(--lighter-orange)">
+									<h3>Login</h3>
+								</button>
+							</form>
 						</div>
-						<div class="form-group">
-
-							<label for="exampleInputPassword1">
-								Wachtwoord
-							</label>
-							<input type="password" class="form-control" id="exampleInputPassword1"/>
-							<button type="submit" class="btn btn-primary" style="background-color: var(--lighter-orange)">
-								<h3>Login</h3>
-							</button>
-						</form>
 					</div>
 				</div>
 
-				<div class="row"  >
-					<div class="col-md-12 border1">
+				<div class="col-md-8" style="background-color: var(--kahki)">
+					<div class="row">
+						<h2>Content</h2>
+						{%  block content %}{%  endblock %}
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12 footer">
 						<h1>Contact</h1>
-                        verrukkulluk.nl<br>
-                        Poststraat 2b<br>
-                        Sittard<br>
-                        info@verrukkulluk.nl<br>
+						verrukkulluk.nl<br>
+						Poststraat 2b<br>
+						Sittard<br>
+						info@verrukkulluk.nl<br>
 					</div>
 				</div>
 			</div>
 
 		</body>
 	</body>
+
+
+	{# <div class="row">
+							<div class="col-md-4" style="background-color: var(--darker-red)">
+								<form role="form">
+			                        <h1>Login</h1>
+									<div class="form-group">
+			
+										<label for="exampleInputEmail1">
+											Email
+										</label>
+										<input type="email" class="form-control" id="exampleInputEmail1"/>
+									</div>
+									<div class="form-group">
+			
+										<label for="exampleInputPassword1">
+											Wachtwoord
+										</label>
+										<input type="password" class="form-control" id="exampleInputPassword1"/>
+										<button type="submit" class="btn btn-primary" style="background-color: var(--lighter-orange)">
+											<h3>Login</h3>
+										</button>
+									</form>
+								</div>
+							</div> #}

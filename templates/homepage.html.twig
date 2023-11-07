@@ -6,7 +6,7 @@
 {% endblock %}
 
 
-{# nu de block content op in de main pagina vullen #}
+{# nu de block content op de main pagina vullen #}
 {% block content %}
     {# Dit is commentaar #}
 
@@ -18,19 +18,21 @@
     <h4>Dit is de template {{  title }}</h4>
 
 {# Loop #}
-    <ul>
+    
     {% for record in data %}
-        <div class="border">
+        <div class="col-5 border gerecht_blok">
             <img src="{{ record.gerecht.afbeelding }}" style="width: 100px; height: 100px;">
-
-            {{ record.gerecht.titel }}
+            {{ record.gerecht.titel }} <br>
+            {{ record.gerecht.korte_omschrijving}} <br>
+            {{ record.waardering}} <br>
+            {{ record.prijs}} <br>
+            {{ record.gemiddelde_waardering}}
         </div>
     {% endfor %}
-    <ul>
-     {# Dump #}
-       {# { <pre>
+     {# { Dump #}
+       {# # { <pre>
         {{ dump(data) }}
-       </pre> #} 
+       </pre>} #}
 
 {% endblock %}
 
