@@ -1,6 +1,30 @@
 {% extends "main.html.twig" %}
 
 {% block header %}
-<img src="assets/img/logo-v2.png"/>
+<img src="assets/img/logo-v2.png";/>
+{% endblock %}
+
+
+{% block content %}
+<div class="col-12 detail gerecht_blok">
+{% for record in data %}
+<img src="{{ record.gerecht.afbeelding }}" style="width: 500px; float: left;">
+<h1>{{ record.gerecht.titel }}</h1> <br>
+{{ record.gerecht.lange_omschrijving}} <br>
+{{ record.calorieën}} <br>
+{{ record.prijs}}<br>
+<button>Smullen!</button>
+{% endfor %}
+</div>
+
+<div class="row border">
+<div class="col-12">
+{% for record in data %}
+{% for ingr in record.ingredienten %}
+<li>
+{{ ingr.art_naam}}
+{% endfor %}
+{% endfor %}
+</div></div>
 {% endblock %}
 

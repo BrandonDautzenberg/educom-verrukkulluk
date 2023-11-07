@@ -44,7 +44,7 @@ class gerecht
                 "toegevoegd door" => $users,
                 "prijs" => $prijs,
                 "calorieën" => $totaalcal,
-                "gemiddelde waardering" => $waardering,
+                "gemiddelde_waardering" => $waardering,
                 "stappen" => $stappen,
                 "opmerkingen" => $opmerkingen,
                 "keuken" => $keuken,

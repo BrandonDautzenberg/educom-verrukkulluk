@@ -16,8 +16,5 @@ class keukentype {
         $keuken_type = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
         return($keuken_type);
-
     }
-
-
 }
