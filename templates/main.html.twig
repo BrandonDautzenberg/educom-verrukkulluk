@@ -23,7 +23,7 @@
 				</div>
 			</div>
 
-			<div class="row border">
+			<div class="row">
 				<div class="col-md-3 agenda">
 					<img src="assets/img/verrukkulluk-agenda.png" style="width: 160px; margin-left: 110px;"><br><br>
 					<i class="fa fa-calendar calendar_icon"></i>
@@ -46,8 +46,9 @@
 					<br>Een workshop vegetarisch koken, onder leiding van Trientje Hupsakee.
 					<br>
 					<br>
+					<br>
 
-					<div class="row">
+					<div class="row login">
 						<div class="col-md-12 border"></div>
 						<form role="form">
 							<img src="assets/img/verrukkulluk-login.png" style="width: 160px; margin-left: 110px;">
@@ -57,60 +58,36 @@
 								</label>
 								<input type="email" class="form-control" id="exampleInputEmail1"/>
 							</div>
+							<br>
 							<div class="form-group">
 
 								<label for="exampleInputPassword1">
 									Wachtwoord
 								</label>
 								<input type="password" class="form-control" id="exampleInputPassword1"/>
-								<button type="submit" class="btn btn-primary login_button" style="background-color: var(--lighter-orange)">
-									<h3>Login</h3>
+								<br>
+								<button type="submit" class="btn login_button" >
+									login
 								</button>
 							</form>
 						</div>
 					</div>
 				</div>
 
-				<div class="col-md-8 border">
+				<div class="col-md-8">
 					<div class="row"> {%  block content %}{%  endblock %}
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="col-md-12 footer">
-							<img src="assets/img/verrukkulluk-pay-off.png" style="width: 160px; float:left;">
-							<img src="assets/img/verrukkulluk-contact.png" style="width: 160px;"> <br>
-							verrukkulluk.nl<br>
+							<img class="pay_off" src="assets/img/verrukkulluk-pay-off.png">
+							<img src="assets/img/verrukkulluk-contact.png" style="width: 160px; margin-top: 10px;"> <br>
+							<div class="contact_info">verrukkulluk.nl<br>
 							Poststraat 2b<br>
 							Sittard<br>
-							info@verrukkulluk.nl<br>
+							info@verrukkulluk.nl<br></div>
 						</div>
 					</div>
 				</div>
 			</body>
-
-
-			{# <div class="row">
-													<div class="col-md-4" style="background-color: var(--darker-red)">
-														<form role="form">
-									                        <h1>Login</h1>
-															<div class="form-group">
-									
-																<label for="exampleInputEmail1">
-																	Email
-																</label>
-																<input type="email" class="form-control" id="exampleInputEmail1"/>
-															</div>
-															<div class="form-group">
-									
-																<label for="exampleInputPassword1">
-																	Wachtwoord
-																</label>
-																<input type="password" class="form-control" id="exampleInputPassword1"/>
-																<button type="submit" class="btn btn-primary" style="background-color: var(--lighter-orange)">
-																	<h3>Login</h3>
-																</button>
-															</form>
-														</div>
-													</div> #}
-		</body>

@@ -39,7 +39,7 @@ URL:
 http://localhost/index.php?gerecht_id=4&action=detail
 */
 
-$gerecht_id = isset($_GET["gerecht_id"]) ? $_GET["gerecht_id"] : "";
+$gerecht_id = isset($_GET["gerecht_id"]) ? $_GET["gerecht_id"] : "detail";
 $action = isset($_GET["action"]) ? $_GET["action"] : "homepage";
 
 

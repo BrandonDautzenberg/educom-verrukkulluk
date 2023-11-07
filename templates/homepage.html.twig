@@ -9,15 +9,13 @@
 {# nu de block content op de main pagina vullen #}
 {% block content %}
     {% for record in data %}
-        <div class="col-5 border gerecht_blok">
-            <img src="{{ record.gerecht.afbeelding }}" style="width: 300px; height: 190px;">
+        <div class="col-5 gerecht_blok">
+            <img src="{{ record.gerecht.afbeelding }}" style="width: 468px; height: 270px; margin-left: -12px;">
             <h1>{{ record.gerecht.titel }}</h1> <br>
             {{ record.gerecht.korte_omschrijving}} <br>
-            {{ record.waardering}} <br>
-            {{ record.prijs}} <br>
-            {{ record.gemiddelde_waardering}} <br>
-            {{ record.calorieën }} <br>
-            <button>Smullen!</button>
+            Gemiddelde waardering: {{ record.gemiddelde_waardering}} <br>
+            <button action="detail">Smullen!</button> aantal: 4 € {{ record.prijs }} calorieën {{ record.calorieën}}
+            <br>
         </div>
     {% endfor %}
      {# { Dump #}

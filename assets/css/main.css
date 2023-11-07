@@ -52,34 +52,10 @@ html, body {
     font-size: 16px;
 }
 
-.footer {
-    border: 2px solid black;
-    background-color: var(--lighter-orange);
-    color: white;
-    margin: 15px;
-    
-}
-
 /* HEADER PROPERTIES */
 .header {
     background-image: url(../img/cooking-banner.jpg);
     background-size: cover;
-}
-
-
-/* LOGIN PROPERTIES */
-.login {
-    background-color: var(--darker-red) !important;
-}
-
-.login h2 {
-    color: white;
-}
-
-.login_button {
-    background-color: var(--darker-orange);
-    margin: 10px;
-    justify-content: center;
 }
 
 /* AGENDA PROPERTIES */
@@ -89,6 +65,7 @@ html, body {
     -webkit-box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.21);
     -moz-box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.21);
     box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.21);
+    margin-left: 80px;
 }
 
 .agenda h2 {
@@ -99,6 +76,7 @@ html, body {
 .agenda h3 {
     color: black;
     display: inline;
+    margin-left: 15px;
 }
 
 .calendar_icon {
@@ -106,13 +84,37 @@ html, body {
     color: white;
 }
 
-/* GERECHT BLOK PROPERTIES */
+/* LOGIN PROPERTIES */
+.login {
+    background-color: var(--darker-red);
+    color: white;
+}
 
-.gerecht_blok {
+.login h2 {
+    color: white;
+}
+
+.login_button {
+    background-color: var(--darker-orange);
     margin: 10px;
-    -webkit-box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.21);
-    -moz-box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.21);
-    box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.21);
+    text-align: center;
+    margin-left: 144px;
+    color: white;
+    font-family: var(--heading);
+    font-size: 33px;
+    width: 30%;
+}
+
+.login_button h3 {
+    color: white;
+}
+
+/* GERECHT BLOK PROPERTIES */
+.gerecht_blok {
+    margin: 30px;
+    -webkit-box-shadow: 0px 0px 3px 3px rgba(0,0,0,0.21);
+    -moz-box-shadow: 0px 0px 4px 4px rgba(0,0,0,0.21);
+    box-shadow: 0px 0px 4px 4px rgba(0,0,0,0.21);
 }
 
 .gerecht_blok h1 {
@@ -127,7 +129,12 @@ html, body {
     color: white;
     border-radius: 12px;
     width: 30%;
-   
+    transition-duration: 0.4s;
+}
+
+.gerecht_blok button:hover {
+    background-color: #AF1F16;
+    text-decoration: none;
 }
 
 .center {
@@ -135,7 +142,26 @@ html, body {
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-  }
+}
+
+  /* FOOTER PROPERTIES */
+.footer {
+    background-color: var(--lighter-orange);
+    color: white;
+    margin: 15px;
+}
+
+.pay_off {
+    width: 120px;
+    float: left;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.contact_info {
+    margin-left: 150px;
+    margin-top: 10px;
+}
 
 /* DETAILPAGINA */
 
