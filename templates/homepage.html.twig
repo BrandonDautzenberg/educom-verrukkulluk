@@ -2,26 +2,33 @@
 {% extends "main.html.twig" %}
 
 {% block header %}
-<img src="assets/img/logo-v2.png"/>
+	<img src="assets/img/logo-v2.png"/>
 {% endblock %}
 
 
 {# nu de block content op de main pagina vullen #}
 {% block content %}
-    {% for record in data %}
-        <div class="col-5 gerecht_blok">
-            <img src="{{ record.gerecht.afbeelding }}" style="width: 468px; height: 270px; margin-left: -12px;">
-            <h1>{{ record.gerecht.titel }}</h1> <br>
-            {{ record.gerecht.korte_omschrijving}} <br>
-            Gemiddelde waardering: {{ record.gemiddelde_waardering}} <br>
-            <button action="detail">Smullen!</button> aantal: 4 € {{ record.prijs }} calorieën {{ record.calorieën}}
-            <br>
-        </div>
-    {% endfor %}
-     {# { Dump #}
-       {# <pre>
-        {{ dump(data) }}
-       </pre> #}
+	{% for record in data %}
+		<div class="col-5 gerecht_blok">
+			<img src="{{ record.gerecht.afbeelding }}" style="width: 410px; height: 270px; margin-left: -12px;">
+			<h1>{{ record.gerecht.titel }}</h1>
+			Gemiddelde waardering:
+			{{ record.gemiddelde_waardering}}
+			<br>
+			<div>{{ record.gerecht.korte_omschrijving}}</div>
+			<br><br><br>
+			<a href="http://localhost/educom-verrukkulluk/index.php?gerecht_id={{record.gerecht.id}}&action=detail">
+				<button>Smullen!</button>
+			</a>
+			<div class="gerecht_data">aantal: 4 €
+				{{ record.prijs }}
+				calorieën
+				{{ record.calorieën}}
+				<br>
+			</div>
+		</div>
+	{% endfor %}
+	{# { <pre>
+	        { dump(data) }}
+	       </pre> #}
 {% endblock %}
-
- 

@@ -1,30 +1,43 @@
 {% extends "main.html.twig" %}
 
 {% block header %}
-<img src="assets/img/logo-v2.png";/>
+	<a href="http://localhost/educom-verrukkulluk/index.php"><img src="assets/img/logo-v2.png" ;/></a>
 {% endblock %}
 
 
 {% block content %}
-<div class="col-12 detail gerecht_blok">
-{% for record in data %}
-<img src="{{ record.gerecht.afbeelding }}" style="width: 500px; float: left;">
-<h1>{{ record.gerecht.titel }}</h1> <br>
-{{ record.gerecht.lange_omschrijving}} <br>
-{{ record.calorieën}} <br>
-{{ record.prijs}}<br>
-<button>Op lijst</button>
-{% endfor %}
-</div>
+	<div class="col-12 detail detail_blok">
+		{% for record in data %}
+			<img src="{{ record.gerecht.afbeelding }}" style="width: 400px; height: 325px; margin: 12px; float: left;">
+			<h1>{{ record.gerecht.titel }}</h1>
+			{{ record.gerecht.lange_omschrijving}}
+			<br>
+			Aantal calorieën:
+			{{ record.calorieën}}
+			<br>
+			Prijs:
+			{{ record.prijs}}<br>
+			Keuken:
+			{{ record.keuken.omschrijving }}
+			<br>
+			Type:
+			{{ record.type.omschrijving }}
+			<br>
+			<div class="flex_container">
+				<button style="float: left;">Op lijst</button><img class="heart_icon" src="assets/img/full_heart.png"></div>
+		{% endfor %}
+	</div>
 
-<div class="row border">
-<div class="col-12">
-{% for record in data %}
-{% for ingr in record.ingredienten %}
-<li>
-{{ ingr.art_naam}}
-{% endfor %}
-{% endfor %}
-</div></div>
-{% endblock %}
-
+	<div class="row detail">
+		<div class="col-12">
+			{% for record in data %}
+				{% for ingr in record.ingredienten %}
+					<li>
+						<img class="art_afbeelding" src="{{ ingr.art_verpakking }}">
+						<h3>{{ ingr.art_naam }}</h3>
+						{{ ingr.art_omschrijving }}
+					{% endfor %}
+				{% endfor %}
+			</div>
+		</div>
+	{% endblock %}

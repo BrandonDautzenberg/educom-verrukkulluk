@@ -30,6 +30,7 @@ class ingredient {
                 "ing_artikel_id" => $row["artikel_id"],
                 "ing_aantal" => $row["aantal"],
                 "art_naam" => $artikel["naam"],
+                "art_omschrijving" => $artikel["omschrijving"],
                 "art_calorieën" => $artikel["calorieen"],
                 "art_prijs" => $artikel["prijs"],
                 "art_eenheid" => $artikel["eenheid"],

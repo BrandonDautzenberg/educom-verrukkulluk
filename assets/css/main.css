@@ -61,11 +61,12 @@ html, body {
 /* AGENDA PROPERTIES */
 .agenda {
     background-color: var(--lighter-green);
-    margin: 15px;
     -webkit-box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.21);
     -moz-box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.21);
     box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.21);
-    margin-left: 80px;
+    padding: 15px;
+    margin-top: 15px;
+    margin-left: 15px;
 }
 
 .agenda h2 {
@@ -88,6 +89,11 @@ html, body {
 .login {
     background-color: var(--darker-red);
     color: white;
+    margin-top: 40px;
+    margin-left: 15px;
+    -webkit-box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.21);
+    -moz-box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.21);
+    box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.21);
 }
 
 .login h2 {
@@ -98,7 +104,7 @@ html, body {
     background-color: var(--darker-orange);
     margin: 10px;
     text-align: center;
-    margin-left: 144px;
+    margin-left: 124px;
     color: white;
     font-family: var(--heading);
     font-size: 33px;
@@ -115,6 +121,7 @@ html, body {
     -webkit-box-shadow: 0px 0px 3px 3px rgba(0,0,0,0.21);
     -moz-box-shadow: 0px 0px 4px 4px rgba(0,0,0,0.21);
     box-shadow: 0px 0px 4px 4px rgba(0,0,0,0.21);
+    position: relative;
 }
 
 .gerecht_blok h1 {
@@ -128,8 +135,23 @@ html, body {
     font-size: 32px;
     color: white;
     border-radius: 12px;
+    height: 10%;
     width: 30%;
     transition-duration: 0.4s;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border: none;
+    margin: 8px;
+}
+
+.gerecht_data {
+    margin-left: 150px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
 }
 
 .gerecht_blok button:hover {
@@ -164,8 +186,53 @@ html, body {
 }
 
 /* DETAILPAGINA */
-
-.detail h1 {
-    color: var(--lighter-green);
+.detail_blok {
+    margin: 15px;
+    -webkit-box-shadow: 0px 0px 3px 3px rgba(0,0,0,0.21);
+    -moz-box-shadow: 0px 0px 4px 4px rgba(0,0,0,0.21);
+    box-shadow: 0px 0px 4px 4px rgba(0,0,0,0.21);
 }
 
+.detail h1 {
+    color: var(--darker-green);
+}
+
+.art_afbeelding {
+    width: 80px;
+}
+
+.detail h3 {
+    display: inline;
+    color: var(--darker-green);
+}
+
+.detail button {
+    display: flex;
+    align-items: center;
+    background-color: var(--lighter-red);
+    font-family: var(--heading);
+    font-size: 28px;
+    color: white;
+    border-radius: 12px;
+    height: 10%;
+    transition-duration: 0.4s;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border: none;
+}
+
+.detail button:hover {
+    background-color: #AF1F16;
+    text-decoration: none;
+}
+
+.heart_icon {
+    height: 30px;
+    align-self: center;
+}
+
+/* OVERIG */
+.flex_container {
+    display: flex;
+}
