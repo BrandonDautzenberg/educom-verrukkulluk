@@ -22,6 +22,7 @@ require_once('lib/keukentype.php');
 require_once('lib/user.php');
 require_once('lib/gerechtinfo.php');
 require_once('lib/boodschappen.php');
+
 $db = new database();
 $gerecht = new gerecht($db->getConnection());
 $artikel = new artikel($db->getConnection());
@@ -32,7 +33,6 @@ $gerecht_info = new gerechtinfo($db->getConnection());
 $boodschappen = new boodschappen($db->getConnection());
 
 $data = $gerecht->selecteer_gerecht();
-
 
 /*
 URL:
@@ -48,16 +48,20 @@ switch($action) {
         case "homepage": {
             $data = $gerecht->selecteer_gerecht();
             $template = 'homepage.html.twig';
-            $title = "homepage";
+            $title = "Verrukkulluk!";
             break;
         }
 
         case "detail": {
             $data = $gerecht->selecteer_gerecht($gerecht_id);
             $template = 'detail.html.twig';
-            $title = "detail pagina";
+            $title = "Detailpagina";
             break;
         }
+
+        case "waardering": {
+
+        };
 
         /// etc
 
