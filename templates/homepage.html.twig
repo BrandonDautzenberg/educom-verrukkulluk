@@ -1,4 +1,3 @@
-{# Opnemen van de "Main" file #}
 {% extends "main.html.twig" %}
 
 {% block header %}
@@ -28,7 +27,7 @@
 			</div>
 		</div>
 	{% endfor %}
-	{# { <pre>
-	        { dump(data) }}
-	       </pre> #}
+	{ <pre>{
+	        {{dump(data) }}
+	       </pre>} #}
 {% endblock %}

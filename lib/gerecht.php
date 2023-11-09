@@ -118,6 +118,7 @@ class gerecht
             foreach ($gerecht_info_array as $opm) {
                 $opmerkingen[] = [
                     "opmerking" => $opm["tekstveld"],
+                    "user" => $opm["user_id"]
                 ];
             }
             return ($opmerkingen);

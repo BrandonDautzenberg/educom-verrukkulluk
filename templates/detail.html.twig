@@ -16,7 +16,8 @@
 			{{ record.calorieën}}
 			<br>
 			Prijs:
-			{{ record.prijs}}<br>
+			{{ record.prijs}}
+			<br>
 			Keuken:
 			{{ record.keuken.omschrijving }}
 			<br>
@@ -25,19 +26,77 @@
 			<br>
 			<div class="flex_container">
 				<button style="float: left;">Op lijst</button><img class="heart_icon" src="assets/img/full_heart.png"></div>
-		{% endfor %}
-	</div>
-
-	<div class="row detail">
-		<div class="col-12">
-			{% for record in data %}
-				{% for ingr in record.ingredienten %}
-					<li>
-						<img class="art_afbeelding" src="{{ ingr.art_verpakking }}">
-						<h3>{{ ingr.art_naam }}</h3>
-						{{ ingr.art_omschrijving }}
-					{% endfor %}
-				{% endfor %}
-			</div>
 		</div>
-	{% endblock %}
+	{% endfor %}
+
+				<div class="tab">
+					<button class="tablinks" onclick="openTab(event, 'ingrediënten')" id="defaultOpen">Ingrediënten</button>
+					<button class="tablinks" onclick="openTab(event, 'bereidingswijze')">Stappen</button>
+					<button class="tablinks" onclick="openTab(event, 'opmerkingen')">Opmerkingen</button>
+				</div>
+
+
+				<div id="ingrediënten" class="tabcontent">
+					<div class="row detail border">
+						<div class="col-12">
+							{% for record in data %}
+								{% for ingr in record.ingredienten %}
+									<li>
+										<img class="art_afbeelding" src="{{ ingr.art_verpakking }}">
+										<h3>{{ ingr.art_naam }}</h3>
+										{{ ingr.art_omschrijving }}
+									{% endfor %}
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+
+
+					<div id="bereidingswijze" class="tabcontent">
+						<div class="row detail border">
+							<div class="col-12">
+								{% for record in data %}
+									{% for stap in record.stappen %}
+										<li>
+											{{ stap.stap }}
+											{{ stap.bereidingswijze}}
+										{% endfor %}
+									{% endfor %}
+								</div>
+							</div>
+						</div>
+
+
+						<div id="opmerkingen" class="tabcontent">
+							<div class="row detail border">
+								<div class="col-12">
+									{% for record in data %}
+										{% for opmerking in record.opmerkingen %}
+											<li>
+												{{ opmerking.opmerking }}
+												Opmerking van user:
+												{{ opmerking.user}}
+											{% endfor %}
+										{% endfor %}
+									</div>
+								</div>
+							</div>
+							
+<script>
+function openTab(evt, tab) {
+	var i, tabcontent, tablinks;
+	tabcontent = document.getElementsByClassName("tabcontent");
+	for (i = 0; i < tabcontent.length; i++) {
+	tabcontent[i].style.display = "none";
+	}
+	tablinks = document.getElementsByClassName("tablinks");
+	for (i = 0; i < tablinks.length; i++) {
+	tablinks[i].className = tablinks[i].className.replace(" active", "");
+	}
+	document.getElementById(tab).style.display = "block";
+	evt.currentTarget.className += " active";
+}
+	document.getElementById("defaultOpen").click();
+</script>
+
+{% endblock %}
