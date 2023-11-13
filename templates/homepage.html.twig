@@ -12,22 +12,29 @@
 			<img src="{{ record.gerecht.afbeelding }}" style="width: 410px; height: 270px; margin-left: -12px;">
 			<h1>{{ record.gerecht.titel }}</h1>
 			Gemiddelde waardering:
-			{{ record.gemiddelde_waardering}}
+			{{ record.gemiddelde_waardering}}		
 			<br>
 			<div>{{ record.gerecht.korte_omschrijving}}</div>
 			<br><br><br>
 			<a href="http://localhost/educom-verrukkulluk/index.php?gerecht_id={{record.gerecht.id}}&action=detail">
-				<button>Smullen!</button>
+				<button>Smullen!</button>		
 			</a>
-			<div class="gerecht_data">aantal: 4 €
-				{{ record.prijs }}
-				calorieën
-				{{ record.calorieën}}
-				<br>
+			<div class="gerecht_data">
+			
+			<img class="icon" src="assets/img/group.png">
+			4 
+			
+			<img class="icon" src="assets/img/euro.png">
+			{{ record.prijs }}
+				
+			<img class="icon" src="assets/img/calories.png">
+			{{ record.calorieën}}
+			<br>
 			</div>
 		</div>
+		
 	{% endfor %}
-	{ <pre>{
+	{# { <pre>{
 	        {{dump(data) }}
-	       </pre>} #}
+	       </pre>} #} 
 {% endblock %}

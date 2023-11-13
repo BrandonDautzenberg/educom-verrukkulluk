@@ -15,7 +15,7 @@
 			Aantal calorieën:
 			{{ record.calorieën}}
 			<br>
-			Prijs:
+			€
 			{{ record.prijs}}
 			<br>
 			Keuken:
@@ -25,78 +25,133 @@
 			{{ record.type.omschrijving }}
 			<br>
 			<div class="flex_container">
-				<button style="float: left;">Op lijst</button><img class="heart_icon" src="assets/img/full_heart.png"></div>
+				<button style="float: left;">Op lijst</button><img class="heart_icon" src="assets/img/full_heart.png">
+			 <i class="fa fa-star fa-2x" data-id="{{ record.gerecht.id }}" data-index="0"></i>
+       		 <i class="fa fa-star fa-2x" data-id="{{ record.gerecht.id }}" data-index="1"></i>
+        	 <i class="fa fa-star fa-2x" data-id="{{ record.gerecht.id }}" data-index="2"></i>
+       		 <i class="fa fa-star fa-2x" data-id="{{ record.gerecht.id }}" data-index="3"></i>
+        	 <i class="fa fa-star fa-2x" data-id="{{ record.gerecht.id }}" data-index="4"></i>    
+			</div>
 		</div>
-	{% endfor %}
+		{% endfor %}
 
-				<div class="tab">
-					<button class="tablinks" onclick="openTab(event, 'ingrediënten')" id="defaultOpen">Ingrediënten</button>
-					<button class="tablinks" onclick="openTab(event, 'bereidingswijze')">Stappen</button>
-					<button class="tablinks" onclick="openTab(event, 'opmerkingen')">Opmerkingen</button>
-				</div>
-
-
-				<div id="ingrediënten" class="tabcontent">
-					<div class="row detail border">
-						<div class="col-12">
-							{% for record in data %}
-								{% for ingr in record.ingredienten %}
-									<li>
-										<img class="art_afbeelding" src="{{ ingr.art_verpakking }}">
-										<h3>{{ ingr.art_naam }}</h3>
-										{{ ingr.art_omschrijving }}
-									{% endfor %}
-								{% endfor %}
-							</div>
-						</div>
-					</div>
+	<div class="tab">
+		<button class="tablinks" onclick="openTab(event, 'ingrediënten')" id="defaultOpen">Ingrediënten</button>
+		<button class="tablinks" onclick="openTab(event, 'bereidingswijze')">Stappen</button>
+		<button class="tablinks" onclick="openTab(event, 'opmerkingen')">Opmerkingen</button>
+	</div>
 
 
-					<div id="bereidingswijze" class="tabcontent">
-						<div class="row detail border">
-							<div class="col-12">
-								{% for record in data %}
-									{% for stap in record.stappen %}
-										<li>
-											{{ stap.stap }}
-											{{ stap.bereidingswijze}}
-										{% endfor %}
-									{% endfor %}
-								</div>
-							</div>
-						</div>
+	<div id="ingrediënten" class="tabcontent">
+		<div class="row detail border">
+			<div class="col-12">
+				{% for record in data %}
+					{% for ingr in record.ingredienten %}
+						<li>
+						<img class="art_afbeelding" src="{{ ingr.art_verpakking }}">
+						<h3>{{ ingr.art_naam }}</h3>
+						{{ ingr.art_omschrijving }}
+					{% endfor %}
+				{% endfor %}
+			</div>
+		</div>
+	</div>
 
 
-						<div id="opmerkingen" class="tabcontent">
-							<div class="row detail border">
-								<div class="col-12">
-									{% for record in data %}
-										{% for opmerking in record.opmerkingen %}
-											<li>
-												{{ opmerking.opmerking }}
-												Opmerking van user:
-												{{ opmerking.user}}
-											{% endfor %}
-										{% endfor %}
-									</div>
-								</div>
-							</div>
-							
-<script>
-function openTab(evt, tab) {
-	var i, tabcontent, tablinks;
-	tabcontent = document.getElementsByClassName("tabcontent");
-	for (i = 0; i < tabcontent.length; i++) {
-	tabcontent[i].style.display = "none";
-	}
-	tablinks = document.getElementsByClassName("tablinks");
-	for (i = 0; i < tablinks.length; i++) {
-	tablinks[i].className = tablinks[i].className.replace(" active", "");
-	}
-	document.getElementById(tab).style.display = "block";
-	evt.currentTarget.className += " active";
-}
-	document.getElementById("defaultOpen").click();
-</script>
+	<div id="bereidingswijze" class="tabcontent">
+		<div class="row detail border">
+			<div class="col-12">
+				{% for record in data %}
+					{% for stap in record.stappen %}
+						<li>
+						{{ stap.stap }}.
+						{{ stap.bereidingswijze}}
+					{% endfor %}
+				{% endfor %}
+			</div>
+		</div>
+	</div>
 
+
+	<div id="opmerkingen" class="tabcontent">
+		<div class="row detail border">
+			<div class="col-12">
+				{% for record in data %}
+					{% for opmerking in record.opmerkingen %}
+						<li>
+						{{ opmerking.opmerking }}
+						Opmerking van user:
+						{{ opmerking.user}}
+					{% endfor %}
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+
+	<!-- TABBLAD VOOR INGREDIËNTEN -->
+	<script>
+		function openTab(evt, tab) {
+			var i, tabcontent, tablinks;
+				tabcontent = document.getElementsByClassName("tabcontent");
+					for (i = 0; i < tabcontent.length; i++) {
+						tabcontent[i].style.display = "none";
+						}
+
+				tablinks = document.getElementsByClassName("tablinks");
+					for (i = 0; i < tablinks.length; i++) {
+						tablinks[i].className = tablinks[i].className.replace(" active", "");
+						}
+
+				document.getElementById(tab).style.display = "block";
+				evt.currentTarget.className += " active";
+				}
+				
+				document.getElementById("defaultOpen").click();  
+	</script>	
+
+	<!-- JQUERY VOOR STERREN -->
+	<script>
+        var gegeven_waardering = -1;
+
+        $(document).ready(function() {
+            resetStarColors();
+
+            $('.fa-star').on('click', function () {
+                const gegeven_waardering = parseInt($(this).data('index') + 1);
+                const gerecht_id = $(this).attr('data-id');
+                const url = `index.php?gerecht_id=${ gerecht_id }&action=waardering&aantal=${ gegeven_waardering }`;
+				console.log(url);
+
+				$.ajax({
+   					url: url,
+					method: "GET",
+					success: function(result) { 
+						console.log(result);
+										}
+				})	
+            })
+
+            $('.fa-star').mouseover(function() {
+                resetStarColors();
+
+                var huidige_waardering = parseInt($(this).data('index'));
+
+                for (var i = 0; i <= huidige_waardering; i++)
+                    $('.fa-star:eq(' + i + ')').css('color', 'yellow');
+            });
+
+            $('.fa-star').mouseleave(function() {
+                resetStarColors();
+                
+                if (gegeven_waardering != -1)
+                    for (var i = 0; i <= gegeven_waardering; i++)
+                        $('.fa-star:eq(' + i + ')').css('color', 'yellow');
+            })
+        });
+
+        function resetStarColors() {
+            $('.fa-star').css('color', 'gray');
+        }
+    </script>
 {% endblock %}
+

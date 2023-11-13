@@ -159,6 +159,10 @@ html, body {
     text-decoration: none;
 }
 
+.gerecht_data .icon {
+    height: 18px;
+}
+
 .center {
     display: block;
     margin-left: auto;
@@ -230,9 +234,55 @@ html, body {
 .heart_icon {
     height: 30px;
     align-self: center;
+    float: left;
 }
 
 /* OVERIG */
 .flex_container {
     display: flex;
 }
+
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: var(--lighter-green);
+  }
+  
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+  }
+  
+  .tab button:hover {
+    background-color: var(--darker-green);
+  }
+  
+  .tab button.active {
+    background-color: var(--darker-green);
+  }
+  
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
+  }
+
+  .star {
+    font-size: 30px;
+    color: #000;
+    cursor: pointer;
+    width: 25px;
+  }
+  
+  .star:hover {
+    color: rgb(231, 231, 17);
+  }
+  
+  .yellow {
+    color: rgb(231, 231, 17);
+  }

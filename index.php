@@ -42,7 +42,6 @@ http://localhost/index.php?gerecht_id=4&action=detail
 $gerecht_id = isset($_GET["gerecht_id"]) ? $_GET["gerecht_id"] : "detail";
 $action = isset($_GET["action"]) ? $_GET["action"] : "homepage";
 
-
 switch($action) {
 
         case "homepage": {
@@ -60,13 +59,16 @@ switch($action) {
         }
 
         case "waardering": {
-
+            $aantal = $_GET["aantal"];
+            $gerecht_id = $_GET["gerecht_id"];
+            header('Content-Type: application/json; charset=utf-8');
+            $data = $gerecht_info->add_waardering($gerecht_id, $aantal);
+            $json = json_encode($data);
+            echo $json;
+            die();
+            break;
         };
-
-        /// etc
-
-}
-
+    };
 
 
 /// Onderstaande code schrijf je idealiter in een layout klasse of iets dergelijks
