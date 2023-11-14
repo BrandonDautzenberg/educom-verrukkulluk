@@ -41,6 +41,8 @@ http://localhost/index.php?gerecht_id=4&action=detail
 
 $gerecht_id = isset($_GET["gerecht_id"]) ? $_GET["gerecht_id"] : "detail";
 $action = isset($_GET["action"]) ? $_GET["action"] : "homepage";
+$waardering = 0;
+$totaal = 0;
 
 switch($action) {
 
@@ -61,15 +63,40 @@ switch($action) {
         case "waardering": {
             $aantal = $_GET["aantal"];
             $gerecht_id = $_GET["gerecht_id"];
-            header('Content-Type: application/json; charset=utf-8');
+            header('Content-Type: application/json; charset=utf-8'); 
             $data = $gerecht_info->add_waardering($gerecht_id, $aantal);
+            $json = json_encode($data);
+            echo $json;
+            $waardering = 1;
+            die();
+            break;
+        };
+
+        case "favoriet": {
+            $gerecht_id = $_GET["gerecht_id"];
+            $user_id = $_GET["user_id"];
+            header('Content-Type: application/json; charset=utf-8');
+            if (isset($_GET["verwijderen"])) {
+                $data = $gerecht_info->favoriet_verwijderen($gerecht_id, $user_id);
+            } else {
+                $data = $gerecht_info->favoriet_toevoegen($gerecht_id, $user_id);
+            }
             $json = json_encode($data);
             echo $json;
             die();
             break;
         };
-    };
 
+        case "boodschappen": {
+            $user_id = $_GET["user_id"];
+            $gerecht_id = $_GET["gerecht_id"];
+            //$boodschappen->boodschappen_toevoegen($gerecht_id, $user_id);
+            $data = $boodschappen->ophalen_boodschappen($user_id);
+            $totaal = $boodschappen->bereken_totaal($user_id);
+            $template = 'boodschappen.html.twig';
+            $title = 'Boodschappen';
+        }
+    };
 
 /// Onderstaande code schrijf je idealiter in een layout klasse of iets dergelijks
 /// Juiste template laden, in dit geval "homepage"
@@ -77,4 +104,4 @@ $template = $twig->load($template);
 
 
 /// En tonen die handel!
-echo $template->render(["title" => $title, "data" => $data]);
+echo $template->render(["title" => $title, "data" => $data, "totaal" => $totaal]);

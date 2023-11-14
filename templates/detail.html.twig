@@ -9,23 +9,23 @@
 	<div class="col-12 detail detail_blok">
 		{% for record in data %}
 			<img src="{{ record.gerecht.afbeelding }}" style="width: 400px; height: 325px; margin: 12px; float: left;">
+			<img class="icon" src="assets/img/group.png"> 4
+			<img class="icon" src="assets/img/calories.png"> {{ record.calorieën }}
+			<i class="fa fa-sharp fa-regular fa-euro-sign" style="color: #d41616;"></i> {{ record.prijs }}
+
 			<h1>{{ record.gerecht.titel }}</h1>
 			{{ record.gerecht.lange_omschrijving}}
 			<br>
-			Aantal calorieën:
-			{{ record.calorieën}}
 			<br>
-			€
-			{{ record.prijs}}
-			<br>
-			Keuken:
+			<h1 style="display: inline;">Keuken:</h1>
 			{{ record.keuken.omschrijving }}
 			<br>
-			Type:
+			<h1 style="display: inline;">Type:</h1>
 			{{ record.type.omschrijving }}
 			<br>
 			<div class="flex_container">
-				<button style="float: left;">Op lijst</button><img class="heart_icon" src="assets/img/full_heart.png">
+				<a href="http://localhost/educom-verrukkulluk/index.php?gerecht_id={{record.gerecht.id}}&user_id=1&action=boodschappen"><button style="float: left; height: 35px;">Op lijst</button></a>
+			 <i class="fa fa-heart fa-2x" data-id="{{ record.gerecht.id}}"></i>
 			 <i class="fa fa-star fa-2x" data-id="{{ record.gerecht.id }}" data-index="0"></i>
        		 <i class="fa fa-star fa-2x" data-id="{{ record.gerecht.id }}" data-index="1"></i>
         	 <i class="fa fa-star fa-2x" data-id="{{ record.gerecht.id }}" data-index="2"></i>
@@ -47,10 +47,10 @@
 			<div class="col-12">
 				{% for record in data %}
 					{% for ingr in record.ingredienten %}
-						<li>
-						<img class="art_afbeelding" src="{{ ingr.art_verpakking }}">
-						<h3>{{ ingr.art_naam }}</h3>
-						{{ ingr.art_omschrijving }}
+						
+						<div><img class="art_afbeelding" src="{{ ingr.art_verpakking }}" style="float: left; display: block; padding: 10px;">
+						<h3>{{ ingr.art_naam }}</h3><br>
+						{{ ingr.art_omschrijving }}</div><br>
 					{% endfor %}
 				{% endfor %}
 			</div>
@@ -111,7 +111,7 @@
 
 	<!-- JQUERY VOOR STERREN -->
 	<script>
-        var gegeven_waardering = -1;
+        let gegeven_waardering = -1;
 
         $(document).ready(function() {
             resetStarColors();
@@ -141,11 +141,13 @@
             });
 
             $('.fa-star').mouseleave(function() {
-                resetStarColors();
-                
-                if (gegeven_waardering != -1)
+                if (gegeven_waardering != -1) {
                     for (var i = 0; i <= gegeven_waardering; i++)
-                        $('.fa-star:eq(' + i + ')').css('color', 'yellow');
+                        $('.fa-star:eq(' + i + ')').css('color', 'yellow')
+					}
+				else {
+					resetStarColors();
+				}
             })
         });
 
@@ -153,5 +155,61 @@
             $('.fa-star').css('color', 'gray');
         }
     </script>
+
+	<!-- JQUERY VOOR FAVORIET -->
+	<script>
+	$(document).ready(function() {
+		$heart = 0;
+		reset_heart_color();
+
+	$('.fa-heart').on('click', function () {
+				if ($heart == 1) {
+					const gerecht_id = $(this).attr('data-id');
+					var url = `index.php?gerecht_id=${ gerecht_id }&action=favoriet&user_id=1&verwijderen=1`
+					console.log(url)
+					$heart = 0;
+
+				} else {
+				$heart = 1;
+				$(".heart").addClass("red")
+                const gerecht_id = $(this).attr('data-id');
+                var url = `index.php?gerecht_id=${ gerecht_id }&action=favoriet&user_id=1`;
+				console.log(url)};
+          
+				$.ajax({
+   					url: url,
+					method: "GET",
+					success: function(result) { 
+						console.log(result);
+										}
+				})	
+			})
+
+	$('.fa-heart').mouseover(function() {
+		$('.fa-heart').css('color', 'red');
+		if ($heart == 1) {
+			$('.fa-heart').css('color', 'gray')
+		}
+	})
+	
+
+	$('.fa-heart').mouseleave(function() {
+		if ($heart == 0) {
+        	reset_heart_color();
+		} else {
+			reset_heart_color_red()
+		}
+	}
+	)}) 
+
+	function reset_heart_color() {
+        $('.fa-heart').css('color', 'gray');
+        }
+
+	function reset_heart_color_red() {
+		$('.fa-heart').css('color', 'red');
+	}	
+	</script>
 {% endblock %}
+
 

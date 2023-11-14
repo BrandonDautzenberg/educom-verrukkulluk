@@ -20,7 +20,7 @@ class gerechtinfo
 
     public function selecteer_gerecht_info($gerecht_id, $record_type)
     {
-        $sql = "select * from gerecht_info where gerecht_id = $gerecht_id and record_type like '$record_type'";
+        $sql = "SELECT * FROM gerecht_info WHERE gerecht_id = $gerecht_id AND record_type LIKE '$record_type'";
         $result = mysqli_query($this->connection, $sql);
         $user = [];
         $row = [];
@@ -40,14 +40,21 @@ class gerechtinfo
     public function favoriet_toevoegen($gerecht_id, $user_id)
     {
         $this->favoriet_verwijderen($gerecht_id, $user_id);
-        $sql = "Insert into gerecht_info (user_id, gerecht_id, record_type) values ($user_id, $gerecht_id, 'F')";
+        $sql = "INSERT INTO gerecht_info (user_id, gerecht_id, record_type) VALUES ($user_id, $gerecht_id, 'F')";
         $result = mysqli_query($this->connection, $sql);
         return ($result);
     }
 
     public function favoriet_verwijderen($gerecht_id, $user_id)
     {
-        $sql = "Delete from gerecht_info where user_id = $user_id and gerecht_id = $gerecht_id and record_type = 'F'";
+        $sql = "DELETE FROM gerecht_info WHERE user_id = $user_id AND gerecht_id = $gerecht_id AND record_type = 'F'";
+        $result = mysqli_query($this->connection, $sql);
+        return ($result);
+    }
+
+    public function add_waardering($gerecht_id, $aantal)
+    {
+        $sql = "INSERT INTO gerecht_info (gerecht_id, nummeriekveld, record_type) VALUES ($gerecht_id, $aantal, 'W')";
         $result = mysqli_query($this->connection, $sql);
         return ($result);
     }

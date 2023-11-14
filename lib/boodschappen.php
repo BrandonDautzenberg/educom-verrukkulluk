@@ -51,6 +51,7 @@ class boodschappen
                 "boodschappen_user_id" => $row["user_id"],
                 "boodschappen_artikel_id" => $row["artikel_id"],
                 "boodschappen_aantal" => $row["aantal"],
+                "boodschappen_prijs" => $row["prijs"],
             ];
         }
         return ($boodschappen);
