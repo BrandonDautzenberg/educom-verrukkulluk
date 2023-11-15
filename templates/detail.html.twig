@@ -9,8 +9,8 @@
 	<div class="col-12 detail detail_blok">
 		{% for record in data %}
 			<img src="{{ record.gerecht.afbeelding }}" style="width: 400px; height: 325px; margin: 12px; float: left;">
-			<img class="icon" src="assets/img/group.png"> 4
-			<img class="icon" src="assets/img/calories.png"> {{ record.calorieën }}
+			<i class="fa fa-solid fa-user" style="color: #d41616;"></i> 4
+			<i class="fa fa-solid fa-fire" style="color: #d41616;"></i> {{ record.calorieën }}
 			<i class="fa fa-sharp fa-regular fa-euro-sign" style="color: #d41616;"></i> {{ record.prijs }}
 
 			<h1>{{ record.gerecht.titel }}</h1>
@@ -41,16 +41,16 @@
 		<button class="tablinks" onclick="openTab(event, 'opmerkingen')">Opmerkingen</button>
 	</div>
 
-
 	<div id="ingrediënten" class="tabcontent">
-		<div class="row detail border">
+		<div class="row detail shadow">
 			<div class="col-12">
 				{% for record in data %}
 					{% for ingr in record.ingredienten %}
 						
 						<div><img class="art_afbeelding" src="{{ ingr.art_verpakking }}" style="float: left; display: block; padding: 10px;">
 						<h3>{{ ingr.art_naam }}</h3><br>
-						{{ ingr.art_omschrijving }}</div><br>
+						{{ ingr.art_omschrijving }}<br>
+						hoeveelheid: {{ ingr.ing_aantal}} {{ingr.art_eenheid}}</div>
 					{% endfor %}
 				{% endfor %}
 			</div>
@@ -59,7 +59,7 @@
 
 
 	<div id="bereidingswijze" class="tabcontent">
-		<div class="row detail border">
+		<div class="row detail shadow">
 			<div class="col-12">
 				{% for record in data %}
 					{% for stap in record.stappen %}
@@ -74,7 +74,7 @@
 
 
 	<div id="opmerkingen" class="tabcontent">
-		<div class="row detail border">
+		<div class="row detail shadow">
 			<div class="col-12">
 				{% for record in data %}
 					{% for opmerking in record.opmerkingen %}
@@ -137,13 +137,13 @@
                 var huidige_waardering = parseInt($(this).data('index'));
 
                 for (var i = 0; i <= huidige_waardering; i++)
-                    $('.fa-star:eq(' + i + ')').css('color', 'yellow');
+                    $('.fa-star:eq(' + i + ')').css('color', '#fdaf08');
             });
 
             $('.fa-star').mouseleave(function() {
                 if (gegeven_waardering != -1) {
                     for (var i = 0; i <= gegeven_waardering; i++)
-                        $('.fa-star:eq(' + i + ')').css('color', 'yellow')
+                        $('.fa-star:eq(' + i + ')').css('color', '#fdaf08')
 					}
 				else {
 					resetStarColors();

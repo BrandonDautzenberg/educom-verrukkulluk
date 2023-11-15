@@ -12,7 +12,27 @@
 			<img src="{{ record.gerecht.afbeelding }}" style="width: 410px; height: 270px; margin-left: -12px;">
 			<h1>{{ record.gerecht.titel }}</h1>
 			Gemiddelde waardering:
-			{{ record.gemiddelde_waardering}}		
+			{% if record.gemiddelde_waardering|round == 5 %}
+			<i class="fa fa-solid fa-star fa" style="color: #fdaf08;"></i>
+			<i class="fa fa-solid fa-star fa" style="color: #fdaf08;"></i>
+			<i class="fa fa-solid fa-star fa" style="color: #fdaf08;"></i>
+			<i class="fa fa-solid fa-star fa" style="color: #fdaf08;"></i>
+			<i class="fa fa-solid fa-star fa" style="color: #fdaf08;"></i>
+			{% elseif record.gemiddelde_waardering|round >= 4 %}
+			<i class="fa fa-solid fa-star fa" style="color: #fdaf08;"></i>
+			<i class="fa fa-solid fa-star fa" style="color: #fdaf08;"></i>
+			<i class="fa fa-solid fa-star fa" style="color: #fdaf08;"></i>
+			<i class="fa fa-solid fa-star fa" style="color: #fdaf08;"></i>
+			{% elseif record.gemiddelde_waardering|round >= 3 %}
+			<i class="fa fa-solid fa-star fa" style="color: #fdaf08;"></i>
+			<i class="fa fa-solid fa-star fa" style="color: #fdaf08;"></i>
+			<i class="fa fa-solid fa-star fa" style="color: #fdaf08;"></i>
+			{% elseif record.gemiddelde_waardering|round >= 2 %}
+			<i class="fa fa-solid fa-star fa" style="color: #fdaf08;"></i>
+			<i class="fa fa-solid fa-star fa" style="color: #fdaf08;"></i>
+			{% elseif record.gemiddelde_waardering|round >= 1 %}
+			<i class="fa fa-solid fa-star fa" style="color: #fdaf08;"></i>
+			{% endif %}		
 			<br>
 			<div>{{ record.gerecht.korte_omschrijving}}</div>
 			<br><br><br>
@@ -21,13 +41,13 @@
 			</a>
 			<div class="gerecht_data">
 			
-			<img class="icon" src="assets/img/group.png">
+			<i class="fa fa-solid fa-user" style="color: #d41616;"></i>
 			4 
 			
 			<i class="fa fa-sharp fa-regular fa-euro-sign" style="color: #d41616;"></i> 
 			{{ record.prijs }}
 				
-			<img class="icon" src="assets/img/calories.png">
+			<i class="fa fa-solid fa-fire" style="color: #d41616;"></i>
 			{{ record.calorieën}}
 			<br>
 			</div>

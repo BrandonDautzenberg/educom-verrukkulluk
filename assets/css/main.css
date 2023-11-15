@@ -256,10 +256,11 @@ html, body {
     float: left;
 }
 
-.red {
-    color: var(--lighter-red) !important; 
+.shadow {
+    -webkit-box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.21);
+    -moz-box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.21);
+    box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.21);
 }
-
 
 /* OVERIG */
 .flex_container {
@@ -301,12 +302,4 @@ html, body {
     color: #000;
     cursor: pointer;
     width: 25px;
-  }
-  
-  .star:hover {
-    color: rgb(231, 231, 17);
-  }
-  
-  .yellow {
-    color: rgb(231, 231, 17);
   }
