@@ -58,6 +58,46 @@ html, body {
     background-size: cover;
 }
 
+.topnav input[type=text] {
+    float: right;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 65px;
+    font-size: 17px;
+    border-radius: 20px;
+}
+
+.menu {
+    top: 20px;
+    right: 20px;
+}
+
+.menu-trigger:hover .dropdown { 
+    top: 0px;
+}
+
+.menu-trigger { 
+    background-image: url("../img/burger.png");
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+    cursor: pointer; 
+    transition: all 0.4s ease; 
+    z-index: 5000 !important;
+}
+
+.dropdown { 
+    position: fixed;
+    top: -400px; 
+    left: 0;
+    right: 0;
+    height: 150px;
+    background-color: khaki;
+    transition: all 0.4s ease; 
+    padding: 40px;
+}
+
 /* AGENDA PROPERTIES */
 .agenda {
     background-color: var(--lighter-green);
@@ -103,12 +143,13 @@ html, body {
 .login_button {
     background-color: var(--darker-orange);
     margin: 10px;
-    text-align: center;
     margin-left: 124px;
     color: white;
     font-family: var(--heading);
     font-size: 33px;
     width: 30%;
+    border-radius: 50px;
+    height: 20%
 }
 
 .login_button h3 {
@@ -134,8 +175,8 @@ html, body {
     font-family: var(--heading);
     font-size: 32px;
     color: white;
-    border-radius: 12px;
-    height: 10%;
+    border-radius: 30px;
+    height: 8%;
     width: 30%;
     transition-duration: 0.4s;
     position: absolute;
@@ -220,8 +261,7 @@ html, body {
 
 .art_afbeelding {
     width: 80px;
-    float: left; 
-    display: block;
+    display: inline-block;
 }
 
 .detail h3 {
@@ -303,3 +343,4 @@ html, body {
     cursor: pointer;
     width: 25px;
   }
+

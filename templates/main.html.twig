@@ -17,78 +17,90 @@
 </html>
 <body>
 	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12 header">
+				<div class="topnav">
+					<input type="text" placeholder="Search..">
+				</div>
+				<div class="menu">
+					<div class="menu-trigger">
+						<div class="dropdown">
+							<div>
+								Menu goes here!
+							</div>
+						</div>
+					</div>
+				</div>
+				{% block header %}{% endblock %}
+			</div>
+		</div>
 
 		<div class="row">
-			<div class="col-md-12 header"> {% block header %}{% endblock %}
+			<div class="col-md-3" style="margin-right: 30px;">
+				<div class="col-md-12 agenda">
+					<img src="assets/img/verrukkulluk-agenda.png" style="width: 160px; margin-left: 110px;"><br><br>
+					<i class="fa fa-calendar calendar_icon"></i>
+					<h3>Vegetarisch koken</h3>
+					<br>Een workshop vegetarisch koken, onder leiding van Trientje Hupsakee.
+					<br>
+					<br>
+					<i class="fa fa-calendar calendar_icon"></i>
+					<h3>Vegetarisch koken</h3>
+					<br>Een workshop vegetarisch koken, onder leiding van Trientje Hupsakee.
+					<br>
+					<br>
+					<i class="fa fa-calendar calendar_icon"></i>
+					<h3>Vegetarisch koken</h3>
+					<br>Een workshop vegetarisch koken, onder leiding van Trientje Hupsakee.
+					<br>
+					<br>
+					<i class="fa fa-calendar calendar_icon"></i>
+					<h3>Vegetarisch koken</h3>
+					<br>Een workshop vegetarisch koken, onder leiding van Trientje Hupsakee.
+				</div>
+
+				<div class="row login">
+					<div class="col-md-12 border"></div>
+					<form role="form">
+						<img src="assets/img/verrukkulluk-login.png" style="width: 160px; margin-left: 110px;">
+						<div class="form-group">
+							<label for="exampleInputEmail1">
+								Email
+							</label>
+							<input type="email" class="form-control" id="exampleInputEmail1"/>
+						</div>
+						<br>
+						<div class="form-group">
+
+							<label for="exampleInputPassword1">
+								Wachtwoord
+							</label>
+							<input type="password" class="form-control" id="exampleInputPassword1"/>
+							<br>
+							<button type="submit" class="btn login_button">
+								login
+							</button>
+						</form>
+					</div>
 				</div>
 			</div>
 
-			<div class="row">
-				<div class="col-md-3" style="margin-right: 30px;">
-					<div class="col-md-12 agenda">
-						<img src="assets/img/verrukkulluk-agenda.png" style="width: 160px; margin-left: 110px;"><br><br>
-						<i class="fa fa-calendar calendar_icon"></i>
-						<h3>Vegetarisch koken</h3>
-						<br>Een workshop vegetarisch koken, onder leiding van Trientje Hupsakee.
-						<br>
-						<br>
-						<i class="fa fa-calendar calendar_icon"></i>
-						<h3>Vegetarisch koken</h3>
-						<br>Een workshop vegetarisch koken, onder leiding van Trientje Hupsakee.
-						<br>
-						<br>
-						<i class="fa fa-calendar calendar_icon"></i>
-						<h3>Vegetarisch koken</h3>
-						<br>Een workshop vegetarisch koken, onder leiding van Trientje Hupsakee.
-						<br>
-						<br>
-						<i class="fa fa-calendar calendar_icon"></i>
-						<h3>Vegetarisch koken</h3>
-						<br>Een workshop vegetarisch koken, onder leiding van Trientje Hupsakee.
-					</div>
-
-					<div class="row login">
-						<div class="col-md-12 border"></div>
-						<form role="form">
-							<img src="assets/img/verrukkulluk-login.png" style="width: 160px; margin-left: 110px;">
-							<div class="form-group">
-								<label for="exampleInputEmail1">
-									Email
-								</label>
-								<input type="email" class="form-control" id="exampleInputEmail1"/>
-							</div>
-							<br>
-							<div class="form-group">
-
-								<label for="exampleInputPassword1">
-									Wachtwoord
-								</label>
-								<input type="password" class="form-control" id="exampleInputPassword1"/>
-								<br>
-								<button type="submit" class="btn login_button">
-									login
-								</button>
-							</form>
-						</div>
+			<div class="col-md-7">
+				<div class="row"> {%  block content %}{%  endblock %}
 					</div>
 				</div>
-				
-				<div class="col-md-7">
-					<div class="row"> {%  block content %}{%  endblock %}
-						</div>
-					</div>
 
-					<div class="row">
-						<div class="col-md-12 footer">
-							<img class="pay_off" src="assets/img/verrukkulluk-pay-off.png">
-							<img src="assets/img/verrukkulluk-contact.png" style="width: 160px; margin-top: 10px;">
-							<br>
-							<div class="contact_info">verrukkulluk.nl<br>
-								Poststraat 2b<br>
-								Sittard<br>
-								info@verrukkulluk.nl<br></div>
-						</div>
+				<div class="row">
+					<div class="col-md-12 footer">
+						<img class="pay_off" src="assets/img/verrukkulluk-pay-off.png">
+						<img src="assets/img/verrukkulluk-contact.png" style="width: 160px; margin-top: 10px;">
+						<br>
+						<div class="contact_info">verrukkulluk.nl<br>
+							Poststraat 2b<br>
+							Sittard<br>
+							info@verrukkulluk.nl<br></div>
 					</div>
 				</div>
-			</body>
+			</div>
 		</body>
+	</body>

@@ -25,12 +25,12 @@
 			<br>
 			<div class="flex_container">
 				<a href="http://localhost/educom-verrukkulluk/index.php?gerecht_id={{record.gerecht.id}}&user_id=1&action=boodschappen"><button style="float: left; height: 35px;">Op lijst</button></a>
-			 <i class="fa fa-heart fa-2x" data-id="{{ record.gerecht.id}}"></i>
 			 <i class="fa fa-star fa-2x" data-id="{{ record.gerecht.id }}" data-index="0"></i>
        		 <i class="fa fa-star fa-2x" data-id="{{ record.gerecht.id }}" data-index="1"></i>
         	 <i class="fa fa-star fa-2x" data-id="{{ record.gerecht.id }}" data-index="2"></i>
        		 <i class="fa fa-star fa-2x" data-id="{{ record.gerecht.id }}" data-index="3"></i>
-        	 <i class="fa fa-star fa-2x" data-id="{{ record.gerecht.id }}" data-index="4"></i>    
+        	 <i class="fa fa-star fa-2x" data-id="{{ record.gerecht.id }}" data-index="4"></i>
+			 <i class="fa fa-heart fa-2x" data-id="{{ record.gerecht.id}}" style="margin-left: auto;"></i>
 			</div>
 		</div>
 		{% endfor %}
@@ -46,7 +46,6 @@
 			<div class="col-12">
 				{% for record in data %}
 					{% for ingr in record.ingredienten %}
-						
 						<div><img class="art_afbeelding" src="{{ ingr.art_verpakking }}" style="float: left; display: block; padding: 10px;">
 						<h3>{{ ingr.art_naam }}</h3><br>
 						{{ ingr.art_omschrijving }}<br>

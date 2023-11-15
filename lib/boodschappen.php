@@ -17,11 +17,13 @@ class boodschappen
         foreach ($ingredienten as $ingredient) {
             $ingredient_artikel = $ingredient["ing_artikel_id"];
             $prijs = $ingredient["art_prijs"];
+            $verpakking = $ingredient["art_verpakking"];
+            $omschrijving = $ingredient["art_omschrijving"];
             $aantal = 1;
             if ($this->artikel_op_lijst($ingredient_artikel, $user_id)) {
                 $result = $this->artikel_bijwerken($ingredient_artikel);
             } else {
-                $result = $this->artikel_toevoegen($ingredient_artikel, $user_id, $aantal, $prijs);
+                $result = $this->artikel_toevoegen($ingredient_artikel, $user_id, $aantal, $prijs, $verpakking, $omschrijving);
             }
         }
         return ($result);
@@ -52,6 +54,8 @@ class boodschappen
                 "boodschappen_artikel_id" => $row["artikel_id"],
                 "boodschappen_aantal" => $row["aantal"],
                 "boodschappen_prijs" => $row["prijs"],
+                "boodschappen_verpakking" => $row["verpakking"],
+                "boodschappen_omschrijving" => $row["omschrijving"],
             ];
         }
         return ($boodschappen);
@@ -79,10 +83,10 @@ class boodschappen
         return($result);
     }
 
-    public function artikel_toevoegen($ingredient_artikel, $user_id, $aantal, $prijs) 
+    public function artikel_toevoegen($ingredient_artikel, $user_id, $aantal, $prijs, $verpakking, $omschrijving) 
     {
-        $sql = "INSERT INTO boodschappen (user_id, artikel_id, aantal, prijs) 
-                VALUES ($user_id, $ingredient_artikel, $aantal, $prijs)";
+        $sql = "INSERT INTO boodschappen (user_id, artikel_id, aantal, prijs, verpakking, omschrijving) 
+                VALUES ($user_id, $ingredient_artikel, $aantal, $prijs, '$verpakking', '$omschrijving')";
         $result = mysqli_query($this->connection, $sql);
         return ($result);
     }

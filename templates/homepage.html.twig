@@ -23,15 +23,25 @@
 			<i class="fa fa-solid fa-star fa" style="color: #fdaf08;"></i>
 			<i class="fa fa-solid fa-star fa" style="color: #fdaf08;"></i>
 			<i class="fa fa-solid fa-star fa" style="color: #fdaf08;"></i>
+			<i class="fa fa-solid fa-star fa" style="color: gray;"></i>
 			{% elseif record.gemiddelde_waardering|round >= 3 %}
 			<i class="fa fa-solid fa-star fa" style="color: #fdaf08;"></i>
 			<i class="fa fa-solid fa-star fa" style="color: #fdaf08;"></i>
 			<i class="fa fa-solid fa-star fa" style="color: #fdaf08;"></i>
+			<i class="fa fa-solid fa-star fa" style="color: gray;"></i>
+			<i class="fa fa-solid fa-star fa" style="color: gray;"></i>
 			{% elseif record.gemiddelde_waardering|round >= 2 %}
 			<i class="fa fa-solid fa-star fa" style="color: #fdaf08;"></i>
 			<i class="fa fa-solid fa-star fa" style="color: #fdaf08;"></i>
+			<i class="fa fa-solid fa-star fa" style="color: gray;"></i>
+			<i class="fa fa-solid fa-star fa" style="color: gray;"></i>
+			<i class="fa fa-solid fa-star fa" style="color: gray;"></i>
 			{% elseif record.gemiddelde_waardering|round >= 1 %}
 			<i class="fa fa-solid fa-star fa" style="color: #fdaf08;"></i>
+			<i class="fa fa-solid fa-star fa" style="color: gray;"></i>
+			<i class="fa fa-solid fa-star fa" style="color: gray;"></i>
+			<i class="fa fa-solid fa-star fa" style="color: gray;"></i>
+			<i class="fa fa-solid fa-star fa" style="color: gray;"></i>
 			{% endif %}		
 			<br>
 			<div>{{ record.gerecht.korte_omschrijving}}</div>

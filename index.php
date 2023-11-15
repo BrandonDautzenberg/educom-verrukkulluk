@@ -90,7 +90,7 @@ switch($action) {
         case "boodschappen": {
             $user_id = $_GET["user_id"];
             $gerecht_id = $_GET["gerecht_id"];
-            //$boodschappen->boodschappen_toevoegen($gerecht_id, $user_id);
+            //boodschappen->boodschappen_toevoegen($gerecht_id, $user_id);
             $data = $boodschappen->ophalen_boodschappen($user_id);
             $totaal = $boodschappen->bereken_totaal($user_id);
             $template = 'boodschappen.html.twig';
