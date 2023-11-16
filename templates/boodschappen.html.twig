@@ -5,16 +5,15 @@
 {% endblock %}
 
 {% block content %}
-    <div class="col-12 boodschappen">
+    <div class="col-12 boodschappen" style="display: flex; flex-direction: column; overflow: scroll; height: 950px;">
     <h2>Boodschappen</h2>
 	{% for record in data %}
-            <div>
-            <div><img class="art_afbeelding" src= {{ record.boodschappen_verpakking }}>
-            {{ record.boodschappen_omschrijving }}</div>
-            {{ record.boodschappen_aantal }}
-            <i class="fa fa-sharp fa-regular fa-euro-sign" style="color: #d41616;"></i>
-            {{ record.boodschappen_prijs / 100}} 
-            </div>
+            <div><img class="art_afbeelding" src= {{ record.boodschappen_verpakking }}></div>
+            <div style="width: 70%; display: inline;">{{ record.boodschappen_omschrijving }}</div>
+            Aantal: {{ record.boodschappen_aantal }}
+            <div style="align-content: flex-end"><i class="fa fa-sharp fa-regular fa-euro-sign" style="color: #d41616;"></i>
+            {{ record.boodschappen_prijs / 100}}</div>
+            
 	{% endfor %}
     <h3>Totaal</h3>€ {{totaal}}
     </div>

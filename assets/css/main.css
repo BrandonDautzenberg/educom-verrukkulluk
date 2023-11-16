@@ -54,8 +54,9 @@ html, body {
 
 /* HEADER PROPERTIES */
 .header {
-    background-image: url(../img/cooking-banner.jpg);
+    background-image: url(../img/verrukkulluk-banner.png);
     background-size: cover;
+    height: 350px;
 }
 
 .topnav input[type=text] {
@@ -73,6 +74,26 @@ html, body {
     right: 20px;
 }
 
+.menu_properties {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+}
+
+.menu_properties div {
+    width: 300px;
+    height: 50px;
+}
+
+.menu_properties a {
+    text-decoration: none;
+}
+
+.menu_properties h2 {
+    color: var(--lighter-red);
+}
+
 .menu-trigger:hover .dropdown { 
     top: 0px;
 }
@@ -81,8 +102,7 @@ html, body {
     background-image: url("../img/burger.png");
     background-size: cover;
     width: 40px;
-    height: 40px;
-    cursor: pointer; 
+    height: 40px;; 
     transition: all 0.4s ease; 
     z-index: 5000 !important;
 }
@@ -93,9 +113,12 @@ html, body {
     left: 0;
     right: 0;
     height: 150px;
-    background-color: khaki;
+    background-color: white;
     transition: all 0.4s ease; 
     padding: 40px;
+    -webkit-box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.21);
+    -moz-box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.21);
+    box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.21);
 }
 
 /* AGENDA PROPERTIES */
@@ -335,6 +358,7 @@ html, body {
     display: none;
     padding: 6px 12px;
     border-top: none;
+    overflow: scroll;
   }
 
   .star {
