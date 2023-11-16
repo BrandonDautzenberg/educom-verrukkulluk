@@ -113,16 +113,19 @@
 
 	<!-- JQUERY VOOR STERREN -->
 	<script>
-        let gegeven_waardering = -1;
-
+        
         $(document).ready(function() {
-            resetStarColors();
+           resetStarColors();
+		   let gegeven_waardering = 0;
 
             $('.fa-star').on('click', function () {
-                const gegeven_waardering = parseInt($(this).data('index') + 1);
+                gegeven_waardering = parseInt($(this).data('index') + 1);
                 const gerecht_id = $(this).attr('data-id');
                 const url = `index.php?gerecht_id=${ gerecht_id }&action=waardering&aantal=${ gegeven_waardering }`;
 				console.log(url);
+				console.log(gegeven_waardering);
+				alert("Bedankt voor uw waardering!");
+				
 
 				$.ajax({
    					url: url,
@@ -132,20 +135,18 @@
 										}
 				})	
             })
-
             $('.fa-star').mouseover(function() {
-                resetStarColors();
-
                 var huidige_waardering = parseInt($(this).data('index'));
-
-                for (var i = 0; i <= huidige_waardering; i++)
-                    $('.fa-star:eq(' + i + ')').css('color', '#fdaf08');
+				if (gegeven_waardering == 0) 
+                	for (var i = 0; i <= huidige_waardering; i++)
+                    	$('.fa-star:eq(' + i + ')').css('color', '#fdaf08');
             });
 
             $('.fa-star').mouseleave(function() {
-                if (gegeven_waardering != -1) {
-                    for (var i = 0; i <= gegeven_waardering; i++)
-                        $('.fa-star:eq(' + i + ')').css('color', '#fdaf08')
+				console.log(gegeven_waardering);
+                if (gegeven_waardering != 0) {
+                    for (var i = 1; i < gegeven_waardering; i++)
+                        $('.fa-star:eq(' + i + ')').css('color', '#fdaf08');
 					}
 				else {
 					resetStarColors();
