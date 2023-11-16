@@ -9,9 +9,9 @@
 		<div class="col-5 gerecht_blok">
 			<img src="{{ record.gerecht.afbeelding }}" style="width: 410px; height: 270px; margin-left: -12px;">
 			<h1>{{ record.gerecht.titel }}</h1>
-			Gemiddelde waardering:
 
 			<!-- DISPLAY GEMIDDELDE WAARDERING -->
+			Gemiddelde waardering: 
 			{% for i in 1..5 %}
 			{% if i <= record.gemiddelde_waardering|round %}
 			<i class="fa fa-solid fa-star fa" style="color: #fdaf08;"></i>
@@ -26,7 +26,7 @@
 			<a href="http://localhost/educom-verrukkulluk/index.php?gerecht_id={{record.gerecht.id}}&action=detail">
 				<button>Smullen!</button>		
 			</a>
-			
+
 			<div class="gerecht_data">
 			<i class="fa fa-solid fa-user" style="color: #d41616;"></i>
 			4 

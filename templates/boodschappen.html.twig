@@ -1,20 +1,25 @@
 {% extends "main.html.twig" %}
 
 {% block header %}
-	<a href="http://localhost/educom-verrukkulluk/index.php"><img src="assets/img/logo-v2.png";/></a>
+	<a href="http://localhost/educom-verrukkulluk/index.php"><img src="assets/img/logo-v2.png" ;/></a>
 {% endblock %}
 
 {% block content %}
-    <div class="col-12 boodschappen" style="display: flex; flex-direction: column; overflow: scroll; height: 950px;">
-    <h2>Boodschappen</h2>
-	{% for record in data %}
-            <div><img class="art_afbeelding" src= {{ record.boodschappen_verpakking }}></div>
-            <div style="width: 70%; display: inline;">{{ record.boodschappen_omschrijving }}</div>
-            Aantal: {{ record.boodschappen_aantal }}
-            <div style="align-content: flex-end"><i class="fa fa-sharp fa-regular fa-euro-sign" style="color: #d41616;"></i>
-            {{ record.boodschappen_prijs / 100}}</div>
-            
-	{% endfor %}
-    <h3>Totaal</h3>€ {{totaal}}
-    </div>
+	<div class="col-12 boodschappen" style="display: flex; flex-direction: column; overflow: scroll; height: 950px;">
+		<h2>Boodschappen</h2>
+
+		{% for record in data %}
+			<div><img class="art_afbeelding" src={{ record.boodschappen_verpakking }}></div>
+			<div style="width: 70%; display: inline;">{{ record.boodschappen_omschrijving }}</div>
+			Aantal:
+			{{ record.boodschappen_aantal }}
+			<div style="align-content: flex-end">
+				<i class="fa fa-sharp fa-regular fa-euro-sign" style="color: #d41616;"></i>
+				{{ record.boodschappen_prijs / 100}}</div>
+		{% endfor %}
+
+		<h3>Totaal</h3>
+        <div><i class="fa fa-sharp fa-regular fa-euro-sign" style="color: #d41616;"></i>
+        {{totaal}}</div>
+	</div>
 {% endblock %}

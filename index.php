@@ -96,6 +96,10 @@ switch($action) {
             $template = 'boodschappen.html.twig';
             $title = 'Boodschappen';
         }
+
+        case "zoeken": {
+            
+        }
     };
 
 /// Onderstaande code schrijf je idealiter in een layout klasse of iets dergelijks

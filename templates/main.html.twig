@@ -17,93 +17,105 @@
 </html>
 
 <body>
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-12 header">
-				<div class="topnav">
-					<input type="text" placeholder="Search..">
-				</div>
-				<div class="menu">
-					<div class="menu-trigger">
-						<div class="dropdown">
-							<div class="menu_properties">
-								<div><img src="assets/img/logo-v2.png" style="height: 120%"/></div>
-								<div><h2>Mijn Favorieten</h2></div>
-								<div><a href="http://localhost/educom-verrukkulluk/index.php?user_id=1&action=boodschappen"><h2>Mijn Boodschappenlijst</h2></a></div>
+
+<!-- HEADER -->
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12 header">
+			<div class="topnav">
+				<input type="text" placeholder="Zoek op recept..">
+			</div>
+			<div class="menu">
+				<div class="menu-trigger">
+					<div class="dropdown">
+						<div class="menu_properties">
+							<div><img src="assets/img/logo-v2.png"></div>
+							<div>
+								<h2>Mijn Favorieten</h2>
+							</div>
+							<div>
+								<a href="http://localhost/educom-verrukkulluk/index.php?user_id=1&action=boodschappen">
+									<h2>Mijn Boodschappenlijst</h2>
+								</a>
 							</div>
 						</div>
 					</div>
 				</div>
-				{% block header %}{% endblock %}
+			</div>
+			{% block header %}{% endblock %}
+		</div>
+	</div>
+
+	<!-- AGENDA -->
+	<div class="row">
+		<div class="col-md-3" style="margin-right: 30px;">
+			<div class="col-md-12 agenda">
+				<img src="assets/img/verrukkulluk-agenda.png" style="width: 160px; margin-left: 110px;"><br><br>
+				<i class="fa fa-solid fa-leaf"></i>
+				<h3>Vegetarisch koken</h3>
+				<br>Een workshop vegetarisch koken, onder leiding van Trientje Hupsakee.
+				<br>
+				<br>
+				<i class="fa fa-solid fa-bacon"></i>
+				<h3>Meatlovers</h3>
+				<br>Een cursus voor vleesgerechten, onder leiding van Kevin Bacon.
+				<br>
+				<br>
+				<i class="fa fa-solid fa-spider"></i>
+				<h3>Halloween Horror</h3>
+				<br>Een workshop voor gerechten met een Halloween thema, onder leiding van Maikel Meijers.
+				<br>
+				<br>
+				<i class="fa fa-solid fa-bread-slice"></i>
+				<h3>Patisserie</h3>
+				<br>Echt leren bakken, een patisserie cursus onder leiding van Tom Poes.
+			</div>
+
+		<!-- LOGIN -->
+		<div class="row login">
+			<div class="col-md-12 border"></div>
+				<form role="form">
+					<img src="assets/img/verrukkulluk-login.png" style="width: 160px; margin-left: 110px;">
+					<div class="form-group">
+						<label for="exampleInputEmail1">
+							Email
+						</label>
+						<input type="email" class="form-control" id="exampleInputEmail1"/>
+					</div>
+					<br>
+					<div class="form-group">
+
+						<label for="exampleInputPassword1">
+							Wachtwoord
+						</label>
+						<input type="password" class="form-control" id="exampleInputPassword1"/>
+						<br>
+						<button type="submit" class="btn login_button">
+							login
+						</button>
+					</form>
+				</div>
 			</div>
 		</div>
 
-		<div class="row">
-			<div class="col-md-3" style="margin-right: 30px;">
-				<div class="col-md-12 agenda">
-					<img src="assets/img/verrukkulluk-agenda.png" style="width: 160px; margin-left: 110px;"><br><br>
-					<i class="fa fa-calendar calendar_icon"></i>
-					<h3>Vegetarisch koken</h3>
-					<br>Een workshop vegetarisch koken, onder leiding van Trientje Hupsakee.
-					<br>
-					<br>
-					<i class="fa fa-calendar calendar_icon"></i>
-					<h3>Vegetarisch koken</h3>
-					<br>Een workshop vegetarisch koken, onder leiding van Trientje Hupsakee.
-					<br>
-					<br>
-					<i class="fa fa-calendar calendar_icon"></i>
-					<h3>Vegetarisch koken</h3>
-					<br>Een workshop vegetarisch koken, onder leiding van Trientje Hupsakee.
-					<br>
-					<br>
-					<i class="fa fa-calendar calendar_icon"></i>
-					<h3>Vegetarisch koken</h3>
-					<br>Een workshop vegetarisch koken, onder leiding van Trientje Hupsakee.
-				</div>
-
-				<div class="row login">
-					<div class="col-md-12 border"></div>
-					<form role="form">
-						<img src="assets/img/verrukkulluk-login.png" style="width: 160px; margin-left: 110px;">
-						<div class="form-group">
-							<label for="exampleInputEmail1">
-								Email
-							</label>
-							<input type="email" class="form-control" id="exampleInputEmail1"/>
-						</div>
-						<br>
-						<div class="form-group">
-
-							<label for="exampleInputPassword1">
-								Wachtwoord
-							</label>
-							<input type="password" class="form-control" id="exampleInputPassword1"/>
-							<br>
-							<button type="submit" class="btn login_button">
-								login
-							</button>
-						</form>
-					</div>
+		<!-- GERECHTEN -->
+		<div class="col-md-7">
+			<div class="row"> {%  block content %}{%  endblock %}
 				</div>
 			</div>
 
-			<div class="col-md-7">
-				<div class="row"> {%  block content %}{%  endblock %}
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-12 footer">
-						<img class="pay_off" src="assets/img/verrukkulluk-pay-off.png">
-						<img src="assets/img/verrukkulluk-contact.png" style="width: 160px; margin-top: 10px;">
-						<br>
-						<div class="contact_info">verrukkulluk.nl<br>
-							Poststraat 2b<br>
-							Sittard<br>
-							info@verrukkulluk.nl<br></div>
-					</div>
+		<!-- FOOTER -->
+			<div class="row">
+				<div class="col-md-12 footer">
+					<img class="pay_off" src="assets/img/verrukkulluk-pay-off.png">
+					<img src="assets/img/verrukkulluk-contact.png" style="width: 160px; margin-top: 10px;">
+					<br>
+					<div class="contact_info">verrukkulluk.nl<br>
+						Poststraat 2b<br>
+						Sittard<br>
+						info@verrukkulluk.nl<br></div>
 				</div>
 			</div>
-		</body>
+		</div>
 	</body>
+</body>

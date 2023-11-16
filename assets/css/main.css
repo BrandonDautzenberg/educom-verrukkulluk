@@ -1,6 +1,6 @@
 /**
  VERRUKKULLUK MAIN.CSS
- */
+ **/
 
 :root {
 
@@ -59,14 +59,23 @@ html, body {
     height: 350px;
 }
 
+.topnav input {
+    background-image: url(https://cdn2.hubspot.net/hubfs/4004166/bioticresearch_website_assets/images/search_icon.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+
 .topnav input[type=text] {
     float: right;
+    text-align: center;
     padding: 6px;
-    border: none;
+    border: solid;
+    margin-left: 10px;
     margin-top: 8px;
     margin-right: 65px;
     font-size: 17px;
     border-radius: 20px;
+    background-color: none;
 }
 
 .menu {
@@ -86,6 +95,10 @@ html, body {
     height: 50px;
 }
 
+.menu_properties img {
+    height: 150%;
+}
+
 .menu_properties a {
     text-decoration: none;
 }
@@ -99,16 +112,19 @@ html, body {
 }
 
 .menu-trigger { 
-    background-image: url("../img/burger.png");
+    margin-top: 10px;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/b/b2/Hamburger_icon.svg");
     background-size: cover;
     width: 40px;
     height: 40px;; 
     transition: all 0.4s ease; 
     z-index: 5000 !important;
+    margin-left: 1610px;
 }
 
 .dropdown { 
     position: fixed;
+    z-index: 1;
     top: -400px; 
     left: 0;
     right: 0;
@@ -143,7 +159,7 @@ html, body {
     margin-left: 15px;
 }
 
-.calendar_icon {
+.agenda i {
     font-size:30px;
     color: white;
 }
@@ -250,7 +266,6 @@ html, body {
     color: var(--darker-red);
 }
 
-
 /* FOOTER PROPERTIES */
 .footer {
     background-color: var(--lighter-orange);
@@ -336,7 +351,7 @@ html, body {
     background-color: var(--lighter-green);
   }
   
-  .tab button {
+.tab button {
     background-color: inherit;
     float: left;
     border: none;
@@ -344,27 +359,27 @@ html, body {
     cursor: pointer;
     padding: 14px 16px;
     transition: 0.3s;
-  }
+}
   
-  .tab button:hover {
+.tab button:hover {
     background-color: var(--darker-green);
-  }
+}
   
-  .tab button.active {
+.tab button.active {
     background-color: var(--darker-green);
-  }
+}
   
-  .tabcontent {
+.tabcontent {
     display: none;
     padding: 6px 12px;
     border-top: none;
     overflow: scroll;
-  }
+}
 
-  .star {
+.star {
     font-size: 30px;
     color: #000;
     cursor: pointer;
     width: 25px;
-  }
+}
 

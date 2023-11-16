@@ -6,6 +6,8 @@
 
 
 {% block content %}
+
+	<!-- GERECHT INFORMATIE -->
 	<div class="col-12 detail detail_blok">
 		{% for record in data %}
 			<img src="{{ record.gerecht.afbeelding }}" style="width: 400px; height: 325px; margin: 12px; float: left;">
@@ -35,14 +37,15 @@
 		</div>
 		{% endfor %}
 
+	<!-- TABBLADEN -->
 	<div class="tab">
 		<button class="tablinks" onclick="openTab(event, 'ingrediënten')" id="defaultOpen">Ingrediënten</button>
 		<button class="tablinks" onclick="openTab(event, 'bereidingswijze')">Stappen</button>
 		<button class="tablinks" onclick="openTab(event, 'opmerkingen')">Opmerkingen</button>
 	</div>
 
-	<div id="ingrediënten" class="tabcontent">
-		<div class="row detail shadow">
+	<div id="ingrediënten" class="tabcontent shadow">
+		<div class="row detail">
 			<div class="col-12">
 				{% for record in data %}
 					{% for ingr in record.ingredienten %}
@@ -57,7 +60,7 @@
 	</div>
 
 
-	<div id="bereidingswijze" class="tabcontent">
+	<div id="bereidingswijze" class="tabcontent shadow">
 		<div class="row detail shadow">
 			<div class="col-12">
 				{% for record in data %}
@@ -72,7 +75,7 @@
 	</div>
 
 
-	<div id="opmerkingen" class="tabcontent">
+	<div id="opmerkingen" class="tabcontent shadow">
 		<div class="row detail shadow">
 			<div class="col-12">
 				{% for record in data %}
@@ -87,7 +90,7 @@
 		</div>
 	</div>
 
-	<!-- TABBLAD VOOR INGREDIËNTEN -->
+	<!-- SCRIPT VOOR TABBLADEN -->
 	<script>
 		function openTab(evt, tab) {
 			var i, tabcontent, tablinks;
@@ -182,7 +185,7 @@
 						console.log(result);
 										}
 				})	
-			})
+	})
 
 	$('.fa-heart').mouseover(function() {
 		$('.fa-heart').css('color', 'red');
@@ -199,11 +202,11 @@
 			reset_heart_color_red()
 		}
 	}
-	)}) 
+	)})
 
 	function reset_heart_color() {
         $('.fa-heart').css('color', 'gray');
-        }
+    }
 
 	function reset_heart_color_red() {
 		$('.fa-heart').css('color', 'red');
