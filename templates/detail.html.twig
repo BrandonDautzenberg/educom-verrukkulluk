@@ -66,17 +66,7 @@
 				{% for record in data %}
 					{% for stap in record.stappen %}
 					<div>
-						{% if (stap.stap == 1) %}
-						<img class="steps" src="assets/img/number-1.png"> 
-						{% elseif (stap.stap == 2) %}
-						<img class="steps" src="assets/img/number-2.png"> 
-						{% elseif (stap.stap == 3) %}
-						<img class="steps" src="assets/img/number-3.png"> 
-						{% elseif (stap.stap == 4) %}
-						<img class="steps" src="assets/img/number-4.png"> 
-						{% elseif (stap.stap == 5) %}
-						<img class="steps" src="assets/img/number-5.png"> 
-						{% endif %}
+						<img class="steps" src="assets/img/number-{{stap.stap}}.png">
 						{{ stap.bereidingswijze}}
 					</div>
 					{% endfor %}
