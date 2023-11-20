@@ -234,6 +234,10 @@ html, body {
     right: 0;
 }
 
+.gerecht_data i {
+    color: #d41616;
+}
+
 .gerecht_blok button:hover {
     background-color: #AF1F16;
     text-decoration: none;
@@ -266,6 +270,10 @@ html, body {
     color: var(--darker-red);
 }
 
+.boodschappen i {
+    color: #d41616;
+}
+
 /* FOOTER PROPERTIES */
 .footer {
     background-color: var(--lighter-orange);
@@ -295,6 +303,10 @@ html, body {
 
 .detail h1 {
     color: var(--darker-green);
+}
+
+.detail i {
+    color: #d41616;
 }
 
 .art_afbeelding {
@@ -381,5 +393,10 @@ html, body {
     color: #000;
     cursor: pointer;
     width: 25px;
+}
+
+.steps {
+    height: 60px;
+    padding: 10px;
 }
 

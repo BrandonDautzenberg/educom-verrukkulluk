@@ -11,9 +11,9 @@
 	<div class="col-12 detail detail_blok">
 		{% for record in data %}
 			<img src="{{ record.gerecht.afbeelding }}" style="width: 400px; height: 325px; margin: 12px; float: left;">
-			<i class="fa fa-solid fa-user" style="color: #d41616;"></i> 4
-			<i class="fa fa-solid fa-fire" style="color: #d41616;"></i> {{ record.calorieën }}
-			<i class="fa fa-sharp fa-regular fa-euro-sign" style="color: #d41616;"></i> {{ record.prijs }}
+			<i class="fa fa-solid fa-user"></i> 4
+			<i class="fa fa-solid fa-fire"></i> {{ record.calorieën }}
+			<i class="fa fa-sharp fa-regular fa-euro-sign"></i> {{ record.prijs }}
 
 			<h1>{{ record.gerecht.titel }}</h1>
 			{{ record.gerecht.lange_omschrijving}}
@@ -65,9 +65,20 @@
 			<div class="col-12">
 				{% for record in data %}
 					{% for stap in record.stappen %}
-						<li>
-						{{ stap.stap }}.
+					<div>
+						{% if (stap.stap == 1) %}
+						<img class="steps" src="assets/img/number-1.png"> 
+						{% elseif (stap.stap == 2) %}
+						<img class="steps" src="assets/img/number-2.png"> 
+						{% elseif (stap.stap == 3) %}
+						<img class="steps" src="assets/img/number-3.png"> 
+						{% elseif (stap.stap == 4) %}
+						<img class="steps" src="assets/img/number-4.png"> 
+						{% elseif (stap.stap == 5) %}
+						<img class="steps" src="assets/img/number-5.png"> 
+						{% endif %}
 						{{ stap.bereidingswijze}}
+					</div>
 					{% endfor %}
 				{% endfor %}
 			</div>
