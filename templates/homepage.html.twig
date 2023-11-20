@@ -7,7 +7,8 @@
 {% block content %}
 	{% for record in data %}
 		<div class="col-5 gerecht_blok">
-			<img src="{{ record.gerecht.afbeelding }}" style="width: 410px; height: 270px; margin-left: -12px;">
+			<img src="{{ record.gerecht.afbeelding }}" style="width: 100%; height: 270px;">
+			<div class="gerecht_blok_text">
 			<h1>{{ record.gerecht.titel }}</h1>
 
 			<!-- DISPLAY GEMIDDELDE WAARDERING -->
@@ -19,7 +20,7 @@
 			<i class="fa fa-solid fa-star fa" style="color: gray;"></i>
 			{% endif %}
 			{% endfor %}
-			<br>
+	
 
 			<div>{{ record.gerecht.korte_omschrijving}}</div>
 			<br><br><br>
@@ -35,7 +36,7 @@
 				
 			<i class="fa fa-solid fa-fire"></i>
 			{{ record.calorieën}}
-			<br>
+			</div>
 			</div>
 		</div>		
 	{% endfor %}
