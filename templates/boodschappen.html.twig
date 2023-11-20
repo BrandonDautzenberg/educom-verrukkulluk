@@ -9,17 +9,18 @@
 		<h2>Boodschappen</h2>
 
 		{% for record in data %}
+			<div class="individueel_artikel">
 			<div><img class="art_afbeelding" src={{ record.boodschappen_verpakking }}></div>
 			<div style="width: 70%; display: inline;">{{ record.boodschappen_omschrijving }}</div>
 			Aantal:
 			{{ record.boodschappen_aantal }}
 			<div style="align-content: flex-end">
 				<i class="fa fa-sharp fa-regular fa-euro-sign"></i>
-				{{ record.boodschappen_prijs / 100}}</div>
+				{{ record.boodschappen_prijs / 100}}</div></div>
 		{% endfor %}
 
-		<h3>Totaal</h3>
+		<div class="totaalberekening"><h3>Totaal</h3>
         <div><i class="fa fa-sharp fa-regular fa-euro-sign"></i>
-        {{totaal}}</div>
+        {{totaal}}</div></div>
 	</div>
 {% endblock %}
