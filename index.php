@@ -95,6 +95,7 @@ switch ($action) {
                 $gerecht_id = $_GET["gerecht_id"];
                 $boodschappen->boodschappen_toevoegen($gerecht_id, $user_id);
             };   
+            
             $data = $boodschappen->ophalen_boodschappen($user_id);
             $totaal = $boodschappen->bereken_totaal($user_id);
             $template = 'boodschappen.html.twig';
@@ -113,7 +114,6 @@ switch ($action) {
         break;
         }}
 };
-
 
 /// Onderstaande code schrijf je idealiter in een layout klasse of iets dergelijks
 /// Juiste template laden, in dit geval "homepage"

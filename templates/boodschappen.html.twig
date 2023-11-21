@@ -45,8 +45,7 @@
 		   			url: url,
 					method: "GET",
 					success: function(result) { 
-					alert("Artikel verwijderd")
-					location.reload();
+					location.replace("http://localhost/educom-verrukkulluk/index.php?user_id=1&action=boodschappen");
 					console.log(result);
 					}
 				})	
@@ -56,5 +55,5 @@
 		$('.fa-trash').mouseover(function() {
 			$('.fa-trash').css('cursor', 'pointer');
 		})
-		</script>
+	</script>
 {% endblock %}
