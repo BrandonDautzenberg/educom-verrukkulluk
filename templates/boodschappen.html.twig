@@ -9,18 +9,52 @@
 		<h2>Boodschappen</h2>
 
 		{% for record in data %}
+			{% if (record.boodschappen_aantal > 0) %}
 			<div class="individueel_artikel">
-			<div><img class="art_afbeelding" src={{ record.boodschappen_verpakking }}></div>
-			<div style="width: 70%; display: inline;">{{ record.boodschappen_omschrijving }}</div>
-			Aantal:
-			{{ record.boodschappen_aantal }}
-			<div style="align-content: flex-end">
-				<i class="fa fa-sharp fa-regular fa-euro-sign"></i>
-				{{ record.boodschappen_prijs / 100}}</div></div>
+				<div><img class="art_afbeelding" src={{ record.boodschappen_verpakking }}></div>
+				<div style="width: 70%; display: inline;">{{ record.boodschappen_omschrijving }}</div>
+				Aantal:
+				{{ record.boodschappen_aantal }}
+				<div style="align-content: flex-end">
+					<i class="fa fa-sharp fa-regular fa-euro-sign"></i>
+					{{ record.boodschappen_prijs / 100}}</div>
+				<div>
+					<i class="fa fa-solid fa-trash" data-id="{{ record.boodschappen_artikel_id}}" aantal="{{record.boodschappen_aantal}}"></i>
+				</div>
+			</div>
+			{% endif %}
 		{% endfor %}
 
-		<div class="totaalberekening"><h3>Totaal</h3>
-        <div><i class="fa fa-sharp fa-regular fa-euro-sign"></i>
-        {{totaal}}</div></div>
+		<div class="totaalberekening">
+			<h3>Totaal</h3>
+			<div>
+				<i class="fa fa-sharp fa-regular fa-euro-sign"></i>
+				{{totaal}}</div>
+		</div>
 	</div>
+
+	<!-- JQUERY VOOR PRULLENBAK-ICOON -->
+	 <script>	
+		$(document).ready(function() {
+			$('.fa-trash').on('click', function () {
+				const ingredient_artikel = $(this).attr('data-id')
+				var aantal = $(this).attr('aantal')
+				var url = `index.php?ingredient_artikel=${ ingredient_artikel }&action=artikel_verwijderen&user_id=1&aantal=${ aantal }`
+
+			$.ajax({
+		   			url: url,
+					method: "GET",
+					success: function(result) { 
+					alert("Artikel verwijderd")
+					location.reload();
+					console.log(result);
+					}
+				})	
+			})
+		})
+
+		$('.fa-trash').mouseover(function() {
+			$('.fa-trash').css('cursor', 'pointer');
+		})
+		</script>
 {% endblock %}

@@ -90,4 +90,14 @@ class boodschappen
         $result = mysqli_query($this->connection, $sql);
         return ($result);
     }
+
+    public function artikel_verwijderen($ingredient_artikel, $user_id, $aantal) {
+        if ($aantal > 0) {
+        $sql = "UPDATE boodschappen  
+                SET aantal = aantal - 1
+                WHERE artikel_id LIKE $ingredient_artikel AND user_id LIKE $user_id";
+        $result = mysqli_query($this->connection, $sql);
+        return ($result);
+        }
+    }
 }

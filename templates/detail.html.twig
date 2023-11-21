@@ -49,10 +49,12 @@
 			<div class="col-12">
 				{% for record in data %}
 					{% for ingr in record.ingredienten %}
-						<div><img class="art_afbeelding" src="{{ ingr.art_verpakking }}" style="float: left; display: block; padding: 10px;">
-						<h3>{{ ingr.art_naam }}</h3><br>
+						<div class="ingredienten_display">
+						<div><img class="art_afbeelding" src="{{ ingr.art_verpakking }}" style="float: left; display: block; padding: 10px;"></div>
+						<div><h3>{{ ingr.art_naam }}</h3><br>
 						{{ ingr.art_omschrijving }}<br>
-						hoeveelheid: {{ ingr.ing_aantal}} {{ingr.art_eenheid}}</div>
+						<div class="hoeveelheid">hoeveelheid:</div> {{ ingr.ing_aantal}} {{ingr.art_eenheid}}</div>
+						</div>
 					{% endfor %}
 				{% endfor %}
 			</div>
@@ -65,7 +67,7 @@
 			<div class="col-12">
 				{% for record in data %}
 					{% for stap in record.stappen %}
-					<div>
+					<div class="stappen_display">
 						<img class="steps" src="assets/img/number-{{stap.stap}}.png">
 						{{ stap.bereidingswijze}}
 					</div>
@@ -175,7 +177,6 @@
 
 				} else {
 				$heart = 1;
-				$(".heart").addClass("red")
                 const gerecht_id = $(this).attr('data-id');
                 var url = `index.php?gerecht_id=${ gerecht_id }&action=favoriet&user_id=1`;
 				console.log(url)};

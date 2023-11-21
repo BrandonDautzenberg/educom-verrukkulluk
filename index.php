@@ -42,6 +42,7 @@ http://localhost/index.php?gerecht_id=4&action=detail
 $zoekterm = isset($_GET["zoekterm"]) ? $_GET["zoekterm"] : "zoeken";
 $gerecht_id = isset($_GET["gerecht_id"]) ? $_GET["gerecht_id"] : "detail";
 $action = isset($_GET["action"]) ? $_GET["action"] : "homepage";
+$ingredient_artikel = isset($_GET["ingredient_artikel"]) ? $_GET["ingredient_artikel"] : "artikel_verwijderen";
 $waardering = 0;
 $totaal = 0;
 
@@ -93,15 +94,24 @@ switch ($action) {
             if (isset($_GET["gerecht_id"])) {
                 $gerecht_id = $_GET["gerecht_id"];
                 $boodschappen->boodschappen_toevoegen($gerecht_id, $user_id);
-                };
+            };   
             $data = $boodschappen->ophalen_boodschappen($user_id);
             $totaal = $boodschappen->bereken_totaal($user_id);
             $template = 'boodschappen.html.twig';
             $title = 'Boodschappen';
         }
 
-    case "zoeken": {
-        }
+    case "artikel_verwijderen": {
+        $user_id = $_GET["user_id"];
+        if (isset($_GET["ingredient_artikel"])) {
+        $ingredient_artikel = $_GET["ingredient_artikel"];
+        $aantal = $_GET["aantal"];
+        $data = $boodschappen->artikel_verwijderen($ingredient_artikel, $user_id, $aantal);
+        $json = json_encode($data);
+        echo $json;
+        die();
+        break;
+        }}
 };
 
 

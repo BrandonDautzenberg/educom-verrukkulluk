@@ -14,13 +14,12 @@
 			<!-- DISPLAY GEMIDDELDE WAARDERING -->
 			Gemiddelde waardering: 
 			{% for i in 1..5 %}
-			{% if i <= record.gemiddelde_waardering|round %}
-			<i class="fa fa-solid fa-star fa" style="color: #fdaf08;"></i>
-			{% else %}
-			<i class="fa fa-solid fa-star fa" style="color: gray;"></i>
-			{% endif %}
+				{% if i <= record.gemiddelde_waardering|round %}
+				<i class="fa fa-solid fa-star fa" style="color: #fdaf08;"></i>
+				{% else %}
+				<i class="fa fa-solid fa-star fa" style="color: gray;"></i>
+				{% endif %}
 			{% endfor %}
-	
 
 			<div>{{ record.gerecht.korte_omschrijving}}</div>
 			<br><br><br>

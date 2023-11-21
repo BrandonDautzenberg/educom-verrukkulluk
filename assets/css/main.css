@@ -369,9 +369,29 @@ html, body {
     box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.21);
 }
 
+.ingredienten_display {
+    display: flex; 
+    justify-content: flex-start; 
+    margin: 10px;
+}
+
+.stappen_display {
+    display: flex; 
+    justify-content: flex-start; 
+    margin: 10px;
+}
+
+.hoeveelheid {
+    color: var(--darker-green);
+    font-size: 20px;
+    font-family: var(--heading);
+    display: inline;
+}
+
 /* OVERIG */
 .flex_container {
     display: flex;
+    justify-content: space-between; 
 }
 
 .tab {
@@ -416,3 +436,4 @@ html, body {
     height: 60px;
     padding: 10px;
 }
+
