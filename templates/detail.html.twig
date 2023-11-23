@@ -1,12 +1,6 @@
 {% extends "main.html.twig" %}
 
-{% block header %}
-	<a href="http://localhost/educom-verrukkulluk/index.php"><img src="assets/img/logo-v2.png" ;/></a>
-{% endblock %}
-
-
 {% block content %}
-
 	<!-- GERECHT INFORMATIE -->
 	<div class="col-12 detail detail_blok">
 		{% for record in data %}
@@ -14,7 +8,6 @@
 			<i class="fa fa-solid fa-user"></i> 4
 			<i class="fa fa-solid fa-fire"></i> {{ record.calorieën }}
 			<i class="fa fa-sharp fa-regular fa-euro-sign"></i> {{ record.prijs }}
-
 			<h1>{{ record.gerecht.titel }}</h1>
 			{{ record.gerecht.lange_omschrijving}}
 			<br>
@@ -67,10 +60,9 @@
 			<div class="col-12">
 				{% for record in data %}
 					{% for stap in record.stappen %}
-					<div class="stappen_display">
+						<div class="stappen_display">
 						<img class="steps" src="assets/img/number-{{stap.stap}}.png">
-						{{ stap.bereidingswijze}}
-					</div>
+						{{ stap.bereidingswijze}}</div>
 					{% endfor %}
 				{% endfor %}
 			</div>
@@ -93,101 +85,100 @@
 		</div>
 	</div>
 
-	<!-- SCRIPT VOOR TABBLADEN -->
-	<script>
-		function openTab(evt, tab) {
-			var i, tabcontent, tablinks;
-				tabcontent = document.getElementsByClassName("tabcontent");
-					for (i = 0; i < tabcontent.length; i++) {
-						tabcontent[i].style.display = "none";
-						}
-
-				tablinks = document.getElementsByClassName("tablinks");
-					for (i = 0; i < tablinks.length; i++) {
-						tablinks[i].className = tablinks[i].className.replace(" active", "");
-						}
-
-				document.getElementById(tab).style.display = "block";
-				evt.currentTarget.className += " active";
-				}
-				
-				document.getElementById("defaultOpen").click();  
-	</script>	
-
-	<!-- JQUERY VOOR STERREN -->
-	<script>
-        
-        $(document).ready(function() {
-           resetStarColors();
-		   let gegeven_waardering = 0;
-
-            $('.fa-star').on('click', function () {
-                gegeven_waardering = parseInt($(this).data('index') + 1);
-                const gerecht_id = $(this).attr('data-id');
-                const url = `index.php?gerecht_id=${ gerecht_id }&action=waardering&aantal=${ gegeven_waardering }`;
-				console.log(url);
-				console.log(gegeven_waardering);
-				alert("Bedankt voor uw waardering!");
-				
-
-				$.ajax({
-   					url: url,
-					method: "GET",
-					success: function(result) { 
-						console.log(result);
-										}
-				})	
-            })
-            $('.fa-star').mouseover(function() {
-                var huidige_waardering = parseInt($(this).data('index'));
-				if (gegeven_waardering == 0) 
-                	for (var i = 0; i <= huidige_waardering; i++)
-                    	$('.fa-star:eq(' + i + ')').css('color', '#fdaf08');
-            });
-
-            $('.fa-star').mouseleave(function() {
-				console.log(gegeven_waardering);
-                if (gegeven_waardering != 0) {
-                    for (var i = 1; i < gegeven_waardering; i++)
-                        $('.fa-star:eq(' + i + ')').css('color', '#fdaf08');
+	 <!-- SCRIPT VOOR TABBLADEN -->
+<script>
+	function openTab(evt, tab) {
+		var i, tabcontent, tablinks;
+			tabcontent = document.getElementsByClassName("tabcontent");
+				for (i = 0; i < tabcontent.length; i++) {
+					tabcontent[i].style.display = "none";
 					}
-				else {
-					resetStarColors();
-				}
-            })
-        });
 
-        function resetStarColors() {
-            $('.fa-star').css('color', 'gray');
-        }
-    </script>
+			tablinks = document.getElementsByClassName("tablinks");
+				for (i = 0; i < tablinks.length; i++) {
+					tablinks[i].className = tablinks[i].className.replace(" active", "");
+					}
 
-	<!-- JQUERY VOOR FAVORIET -->
-	<script>
+			document.getElementById(tab).style.display = "block";
+			evt.currentTarget.className += " active";
+			}
+			
+			document.getElementById("defaultOpen").click();  	  
+
+// JQUERY VOOR STERREN
 	$(document).ready(function() {
+		resetStarColors();
+		let gegeven_waardering = 0;
+
+		$('.fa-star').on('click', function () {
+			gegeven_waardering = parseInt($(this).data('index') + 1);
+			const gerecht_id = $(this).attr('data-id');
+			const url = `index.php?gerecht_id=${ gerecht_id }&action=waardering&aantal=${ gegeven_waardering }`;
+			console.log(url);
+			console.log(gegeven_waardering);
+			alert("Bedankt voor uw waardering!");
+			
+
+			$.ajax({
+				url: url,
+				method: "GET",
+				success: function(result) { 
+					console.log(result);
+									}
+			})	
+		})
+		$('.fa-star').mouseover(function() {
+			var huidige_waardering = parseInt($(this).data('index'));
+			if (gegeven_waardering == 0) 
+				for (var i = 0; i <= huidige_waardering; i++)
+					$('.fa-star:eq(' + i + ')').css('color', '#fdaf08');
+		});
+
+		$('.fa-star').mouseleave(function() {
+			console.log(gegeven_waardering);
+			if (gegeven_waardering != 0) {
+				for (var i = 1; i < gegeven_waardering; i++)
+					$('.fa-star:eq(' + i + ')').css('color', '#fdaf08');
+				}
+			else {
+				resetStarColors();
+			}
+		})
+	});
+
+	function resetStarColors() {
+		$('.fa-star').css('color', 'gray');
+	}
+
+	// JQUERY VOOR FAVORIET
+	$(document).ready(function() {
+		url = "";
 		$heart = 0;
 		reset_heart_color();
 
 	$('.fa-heart').on('click', function () {
-				if ($heart == 1) {
-					const gerecht_id = $(this).attr('data-id');
-					var url = `index.php?gerecht_id=${ gerecht_id }&action=favoriet&user_id=1&verwijderen=1`
-					console.log(url)
-					$heart = 0;
-
-				} else {
-				$heart = 1;
-                const gerecht_id = $(this).attr('data-id');
-                var url = `index.php?gerecht_id=${ gerecht_id }&action=favoriet&user_id=1`;
-				console.log(url)};
+		if ($heart == 1) {
+			const gerecht_id = $(this).attr('data-id');
+			var url = `index.php?gerecht_id=${ gerecht_id }&action=favoriet&user_id=1&verwijderen=1`
+			console.log(url)
+			$heart = 0;
+			alert("Verwijderd uit favorieten-lijst")
+					
+		} else {
+		$heart = 1;
+		const gerecht_id = $(this).attr('data-id');
+		var url = `index.php?gerecht_id=${ gerecht_id }&action=favoriet&user_id=1`;
+		console.log(url);
+		alert("Toegevoegd aan favorieten")
+		}
           
-				$.ajax({
-   					url: url,
-					method: "GET",
-					success: function(result) { 
-						console.log(result);
-										}
-				})	
+		$.ajax({
+			url: url,
+			method: "GET",
+			success: function(result) { 
+				console.log(result);
+								}
+		})	
 	})
 
 	$('.fa-heart').mouseover(function() {
@@ -205,7 +196,8 @@
 			reset_heart_color_red()
 		}
 	}
-	)})
+	)}
+	)
 
 	function reset_heart_color() {
         $('.fa-heart').css('color', 'gray');
@@ -214,7 +206,7 @@
 	function reset_heart_color_red() {
 		$('.fa-heart').css('color', 'red');
 	}	
-	</script>
+</script>
 {% endblock %}
 
 

@@ -1,9 +1,5 @@
 {% extends "main.html.twig" %}
 
-{% block header %}
-	<img src="assets/img/logo-v2.png"/>
-{% endblock %}
-
 {% block content %}
 	{% for record in data %}
 		<div class="col-5 gerecht_blok">
@@ -15,9 +11,9 @@
 			Gemiddelde waardering: 
 			{% for i in 1..5 %}
 				{% if i <= record.gemiddelde_waardering|round %}
-				<i class="fa fa-solid fa-star fa" style="color: #fdaf08;"></i>
+					<i class="fa fa-solid fa-star fa" style="color: #fdaf08;"></i>
 				{% else %}
-				<i class="fa fa-solid fa-star fa" style="color: gray;"></i>
+					<i class="fa fa-solid fa-star fa" style="color: gray;"></i>
 				{% endif %}
 			{% endfor %}
 
@@ -30,6 +26,7 @@
 			<div class="gerecht_data">
 			<i class="fa fa-solid fa-user"></i>
 			4 
+			
 			<i class="fa fa-sharp fa-regular fa-euro-sign"></i> 
 			{{ record.prijs }}
 				

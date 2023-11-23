@@ -1,38 +1,40 @@
 <html lang="nl">
 	<head>
 
-		<title>
-			{{ title }}
-		</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<title>
+		{{ title }}
+	</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
-		<link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.css"/>
-		<link rel="stylesheet" type="text/css" href="assets/css/fonts.css"/>
-		<link rel="stylesheet" type="text/css" href="assets/css/fontawesome.css"/>
-		<link rel="stylesheet" type="text/css" href="assets/css/main.css"/>
+	<link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.css"/>
+	<link rel="stylesheet" type="text/css" href="assets/css/fonts.css"/>
+	<link rel="stylesheet" type="text/css" href="assets/css/fontawesome.css"/>
+	<link rel="stylesheet" type="text/css" href="assets/css/main.css"/>
 
-	 <script type="text/javascript" language="javascript" src="assets/jquery/jquery-3.5.1.js"></script>
-		 <script type="text/javascript" language="javascript" src="assets/bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" language="javascript" src="assets/jquery/jquery-3.5.1.js"></script>
+	<script type="text/javascript" language="javascript" src="assets/bootstrap/js/bootstrap.js"></script>
+	<script src="script.js"></script>
 	</head>
 </html>
 
 <body>
-
 <!-- HEADER -->
+{% block header %}
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12 header">
 			<div class="topnav">
 				<input id="zoekterm" type="text" placeholder="Zoek op gerecht...">
-				<button onclick="returnText()">Zoeken</button>
+				<button onclick="zoeken()">Zoeken</button>
 			</div>
-			<div class="menu">
-				<div class="menu-trigger">
-					<div class="dropdown">
-						<div class="menu_properties">
-							<div><img src="assets/img/logo-v2.png"></div>
-							<div>
-								<h2>Mijn Favorieten</h2>
+
+		<div class="menu">
+			<div class="menu-trigger">
+				<div class="dropdown">
+					<div class="menu_properties">
+						<div><img src="assets/img/logo-v2.png"></div>
+						<div>
+							<h2>Mijn Favorieten</h2>
 							</div>
 							<div>
 								<a href="http://localhost/educom-verrukkulluk/index.php?user_id=1&action=boodschappen">
@@ -43,9 +45,10 @@
 					</div>
 				</div>
 			</div>
-			{% block header %}{% endblock %}
+			<a href="http://localhost/educom-verrukkulluk/index.php"><img src="assets/img/logo-v2.png" ;/></a>
 		</div>
 	</div>
+{% endblock %}
 
 	<!-- AGENDA -->
 	<div class="row">
@@ -120,10 +123,3 @@
 		</div>
 	</body>
 </body>
-
-<script>
-function returnText() {
-	let input = document.getElementById("zoekterm").value
-	window.location.replace("http://localhost/educom-verrukkulluk/index.php?action=zoeken&zoekterm=" + input)
-	}
-</script>
