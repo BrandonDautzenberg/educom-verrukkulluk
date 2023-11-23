@@ -86,7 +86,7 @@ class boodschappen
     public function artikel_toevoegen($ingredient_artikel, $user_id, $aantal, $prijs, $verpakking, $omschrijving) 
     {
         $sql = "INSERT INTO boodschappen (user_id, artikel_id, aantal, prijs, verpakking, omschrijving) 
-                VALUES ($user_id, $ingredient_artikel, $aantal, $prijs, '$verpakking', '$omschrijving')";
+                VALUES ('$user_id', '$ingredient_artikel', '$aantal', '$prijs', '$verpakking', '$omschrijving')";
         $result = mysqli_query($this->connection, $sql);
         return ($result);
     }
@@ -96,6 +96,7 @@ class boodschappen
         $sql = "UPDATE boodschappen  
                 SET aantal = aantal - 1
                 WHERE artikel_id LIKE $ingredient_artikel AND user_id LIKE $user_id";}
+
         else if ($aantal == 1) {
         $sql = "DELETE FROM boodschappen
                 WHERE artikel_id LIKE $ingredient_artikel AND user_id LIKE $user_id";

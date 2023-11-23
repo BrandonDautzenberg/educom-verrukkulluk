@@ -66,7 +66,7 @@ switch ($action) {
             $aantal = $_GET["aantal"];
             $gerecht_id = $_GET["gerecht_id"];
             header('Content-Type: application/json; charset=utf-8');
-            //$data = $gerecht_info->add_waardering($gerecht_id, $aantal);
+            $data = $gerecht_info->add_waardering($gerecht_id, $aantal);
             $json = json_encode($data);
             echo $json;
             $waardering = 1;
@@ -90,30 +90,38 @@ switch ($action) {
         };
 
     case "boodschappen": {
-            $user_id = $_GET["user_id"];
-            if (isset($_GET["gerecht_id"])) {
-                $gerecht_id = $_GET["gerecht_id"];
-                $boodschappen->boodschappen_toevoegen($gerecht_id, $user_id);
-            };   
-            
-            $data = $boodschappen->ophalen_boodschappen($user_id);
-            $totaal = $boodschappen->bereken_totaal($user_id);
-            $template = 'boodschappen.html.twig';
-            $title = 'Boodschappen';
-        }
+        $user_id = $_GET["user_id"];
+        if (isset($_GET["gerecht_id"])) {
+            $gerecht_id = $_GET["gerecht_id"];
+            $boodschappen->boodschappen_toevoegen($gerecht_id, $user_id);
+        };   
+        $data = $boodschappen->ophalen_boodschappen($user_id);
+        $totaal = $boodschappen->bereken_totaal($user_id);
+        $template = 'boodschappen.html.twig';
+        $title = 'Boodschappen';
+        break;
+    }
 
     case "artikel_verwijderen": {
         $user_id = $_GET["user_id"];
         if (isset($_GET["ingredient_artikel"])) {
-        $ingredient_artikel = $_GET["ingredient_artikel"];
-        $aantal = $_GET["aantal"];
-        $data = $boodschappen->artikel_verwijderen($ingredient_artikel, $user_id, $aantal);
-        $json = json_encode($data);
-        echo $json;
-        die();
+            $ingredient_artikel = $_GET["ingredient_artikel"];
+            $aantal = $_GET["aantal"];
+            $data = $boodschappen->artikel_verwijderen($ingredient_artikel, $user_id, $aantal);
+            $json = json_encode($data);
+            echo $json;
+            die();
+            break;
+        }
+    }
+    
+    case "zoeken": {
+        $data = $gerecht->zoeken($zoekterm);
+        $title = 'Zoekpagina';
+        $template = 'zoekpagina.html.twig';
         break;
-        }}
-};
+    }
+};  
 
 /// Onderstaande code schrijf je idealiter in een layout klasse of iets dergelijks
 /// Juiste template laden, in dit geval "homepage"

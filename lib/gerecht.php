@@ -20,9 +20,9 @@ class gerecht
     public function selecteer_gerecht($gerecht_id = "alle_gerechten")
     {
         if ($gerecht_id === "alle_gerechten") {
-            $sql = "select * from gerecht";
+            $sql = "SELECT * FROM gerecht";
         } else {
-            $sql = "select * from gerecht where id = $gerecht_id";
+            $sql = "SELECT * FROM gerecht WHERE id = $gerecht_id";
         }
         $result = mysqli_query($this->connection, $sql);
 
@@ -148,5 +148,21 @@ class gerecht
             }
             return ($favorieten);
         }
+    }
+
+    public function zoeken($zoekterm)
+    {
+        $sql = "SELECT * FROM gerecht WHERE titel LIKE '%$zoekterm%'";
+        $result = mysqli_query($this->connection, $sql);
+        $return = [];
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $return[] = [
+                "gerecht_id" => $row["id"],
+                "titel" => $row["titel"],
+                "korte_omschrijving" => $row["korte_omschrijving"],
+                "afbeelding" => $row["afbeelding"],
+            ];
+         }
+    return ($return);
     }
 }
